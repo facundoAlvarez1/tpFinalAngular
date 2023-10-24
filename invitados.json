@@ -1,0 +1,12 @@
+{
+  "invitados": [
+    {
+      "nombre": "facundo",
+      "apellido": "alvarez",
+      "email": "facundoalvarez130@gmail.com",
+      "telefono": "02236830509",
+      "cantidad": "2",
+      "id": 1
+    }
+  ]
+}

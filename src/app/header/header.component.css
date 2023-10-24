@@ -1,0 +1,41 @@
+.logo {
+    width: 30rem;
+    height: auto;
+    border-radius: 1rem;
+    margin-left: 2rem;
+}
+
+.nav-menu-link {
+    text-decoration: none;
+    color: #0a014f;
+    padding: 0.8rem 1.2rem;
+    border-radius: 5rem;
+}
+
+.nav-menu-link:hover {
+    background: linear-gradient(to right, #fae0e077, #b08ce077);
+    transition: .5s;
+}
+
+.nav-menu-link {
+    color: #ffffff;
+}
+.nav-menu-link:hover {
+    background: none;
+    color: #111111;
+}
+
+.nav-menu-link {
+    text-decoration: none;
+    color: #0a014f;
+    padding: 0.8rem 1.2rem;
+    border-radius: 5rem;
+    background: linear-gradient(to right, #dfe0c4, #dac655); /* Gradiente de azul claro a azul más claro */
+    color: #ffffff; /* Color del texto (blanco) */
+}
+
+.nav-menu-link:hover {
+    background: linear-gradient(to right, #bea11d, #a39c87); /* Gradiente de colores al pasar el mouse */
+    transition: .5s;
+    color: #111111; /* Color del texto al pasar el mouse (negro) */
+}
