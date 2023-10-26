@@ -10,8 +10,12 @@
             <li class="nav-menu-item"><a class="nav-menu-link" href="#sobre-mi">Nuestra Historia</a></li>
             <li class="nav-menu-item"><a class="nav-menu-link" href="#contacto">Contacto</a></li>
             <li class="nav-menu-item"><a class="nav-menu-link" href="#Confirmación">Confirmación</a></li>
+            <li class="nav-menu-item">
+                <button (click)="abrirCarrito()">
+                  <i class="fa fa-shopping-cart" style="font-size: 35px;"></i>
+                  <span class="carrito-cantidad" *ngIf="cantidadCarrito > 0">{{ cantidadCarrito }}</span>
+                </button>
+              </li>
         </ul>
     </nav>
 </header>
-
-

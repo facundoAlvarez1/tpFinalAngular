@@ -75,9 +75,7 @@ export class AppComponent {
       console.log('Formulario no válido');
     }
   }
-
-
-
+  
 }
 
 /*

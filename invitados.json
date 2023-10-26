@@ -7,6 +7,22 @@
       "telefono": "02236830509",
       "cantidad": "2",
       "id": 1
+    },
+    {
+      "nombre": "Mauricio ",
+      "apellido": "Leoz",
+      "email": "mauri@gmail.com",
+      "telefono": "2235234566",
+      "cantidad": "2",
+      "id": 2
+    },
+    {
+      "nombre": "Nicolas ",
+      "apellido": "Vera",
+      "email": "vera@gmail.com",
+      "telefono": "2235644335",
+      "cantidad": "10",
+      "id": 3
     }
   ]
 }

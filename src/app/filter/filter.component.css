@@ -1,0 +1,13 @@
+.comprar-button {
+    background-color: #007bff; /* Color de fondo del botón */
+    color: #fff; /* Color del texto del botón */
+    padding: 8px 16px; /* Espaciado interno del botón */
+    border: none; /* Elimina el borde */
+    border-radius: 4px; /* Borde redondeado */
+    cursor: pointer; /* Cambia el cursor al pasar el ratón sobre el botón */
+    font-weight: bold; /* Texto en negrita */
+}
+
+.comprar-button:hover {
+    background-color: #0056b3; /* Cambia el color de fondo al pasar el ratón sobre el botón */
+}
