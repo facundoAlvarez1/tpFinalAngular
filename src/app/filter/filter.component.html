@@ -24,6 +24,7 @@
     <h1 class="subtitulos" id="titulo-pagina-productos">
         Descubre nuestras opciones de regalo
     </h1>
+
     <div class="grid-container">
         <div class="grid-item" *ngFor="let producto of productos">
             <img [src]="producto.imagen" width="300px" height="300px" alt="Imagen del producto">
@@ -45,4 +46,8 @@
         </li>
     </ul>
     <p>Total: {{ calcularTotal() | currency }}</p>
+
+    <button (click)="finalizarCompra()">Finalizar Compra</button>
+
+
 </div>

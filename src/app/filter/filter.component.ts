@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CarritoService } from '../carrito.service';
+import { MatDialog } from '@angular/material/dialog';
 
 export interface Producto {
   id : number;
@@ -15,6 +16,10 @@ export interface Producto {
   styleUrls: ['./filter.component.css']
 })
 export class FilterComponent {
+
+
+  mostrarCarrito = false;
+  mostrarVentanaEmergente = false;
 
   carrito: Producto[] = [];
 
@@ -97,6 +102,7 @@ export class FilterComponent {
  filtroPrecio : string= '';
   filtroBusqueda: string = '';
   cartService: any;
+  dialog: any;
 
   aplicarFiltro() {
     // Filtrar los productos por la categoría seleccionada
@@ -151,4 +157,21 @@ export class FilterComponent {
     return this.carrito.reduce((total, producto) => total + producto.precio, 0);
   }
 
+  finalizarCompra() {
+    // Abre una ventana emergente con los productos del carrito y el total formateado
+    const ventanaEmergente = window.open('', '_blank', 'width=400,height=400');
+    
+    if (ventanaEmergente) {
+      // Formatea el total como una cadena con formato de moneda
+      const totalFormateado = this.calcularTotal().toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+  
+      // Genera el contenido HTML que se mostrará en la ventana emergente
+      const carritoHTML = this.carrito.map(item => `${item.nombre} - ${item.precio.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}`).join('<br>');
+  
+      ventanaEmergente.document.write(`<h1>Detalle de la Compra</h1><p>${carritoHTML}</p><p>Total: ${totalFormateado}</p>`);
+    } else {
+      // Manejo de caso en el que la ventana emergente no se pudo abrir
+      console.error('No se pudo abrir la ventana emergente. Puede que esté bloqueada por el navegador.');
+    }
+  }
 }

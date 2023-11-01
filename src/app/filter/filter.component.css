@@ -1,13 +1,111 @@
-.comprar-button {
-    background-color: #007bff; /* Color de fondo del botón */
-    color: #fff; /* Color del texto del botón */
+/* Estilo para el botón del carrito */
+#carrito button {
+    background-color: #f1bb55; /* Color de fondo del botón (azul) */
+    color: #fff; /* Color del texto (blanco) */
     padding: 8px 16px; /* Espaciado interno del botón */
-    border: none; /* Elimina el borde */
+    border: none; /* Quita el borde del botón */
     border-radius: 4px; /* Borde redondeado */
-    cursor: pointer; /* Cambia el cursor al pasar el ratón sobre el botón */
+    cursor: pointer; /* Cambia el cursor al pasar el ratón */
     font-weight: bold; /* Texto en negrita */
-}
+  }
+  
+  /* Estilo al pasar el ratón sobre el botón del carrito */
+  #carrito button:hover {
+    background-color: #0056b3; /* Cambia el color de fondo al pasar el ratón (azul más oscuro) */
+  }
 
-.comprar-button:hover {
-    background-color: #0056b3; /* Cambia el color de fondo al pasar el ratón sobre el botón */
-}
+/* Estilo para el contenedor del carrito */
+#carrito.section {
+    background-color: #f7f7f7; /* Un tono más claro de gris */
+    border: 1px solid #ddd; /* Borde más suave */
+    padding: 20px;
+    border-radius: 10px; /* Bordes más redondeados */
+    margin: 20px auto;
+    max-width: 800px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+  
+  /* Estilo para el título del carrito */
+  #carrito h2 {
+    font-size: 1.8rem;
+    color: #555; /* Un tono de gris más suave */
+    margin-bottom: 15px;
+  }
+  
+  /* Estilo para la lista del carrito */
+  #carrito ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  /* Estilo para los elementos de la lista del carrito */
+  #carrito li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+  }
+  
+  /* Estilo para los botones de eliminar del carrito */
+  #carrito .carrito-remove-button {
+    background-color: #e74c3c; /* Un rojo brillante */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  #carrito .carrito-remove-button:hover {
+    background-color: #c0392b; /* Un rojo más oscuro al pasar el ratón */
+  }
+  
+  /* Estilo para el botón de finalizar compra del carrito */
+  #carrito .carrito-finalizar-button {
+    background-color: #3498db; /* Un azul vibrante */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  #carrito .carrito-finalizar-button:hover {
+    background-color: #2980b9; /* Un azul más oscuro al pasar el ratón */
+  }
+
+  /* Estilo para los botones de "Comprar" */
+.grid-item button {
+    background-color: #f1bb55; /* Color de fondo (azul) */
+    color: #fff; /* Color del texto (blanco) */
+    padding: 8px 16px; /* Espaciado interno del botón */
+    border: none; /* Quita el borde del botón */
+    border-radius: 4px; /* Borde redondeado */
+    cursor: pointer; /* Cambia el cursor al pasar el ratón */
+    font-weight: bold; /* Texto en negrita */
+  }
+  
+  /* Estilo al pasar el ratón sobre los botones de "Comprar" */
+  .grid-item button:hover {
+    background-color: #0056b3; /* Cambia el color de fondo al pasar el ratón (azul más oscuro) */
+  }
+  
+  /* Estilo para los botones de "Quitar" en el carrito */
+  #carrito .carrito-remove-button {
+    background-color: #e74c3c; /* Color de fondo (rojo brillante) */
+    color: #fff; /* Color del texto (blanco) */
+    border: none; /* Quita el borde del botón */
+    border-radius: 5px; /* Borde redondeado */
+    padding: 5px 10px; /* Espaciado interno del botón */
+    cursor: pointer; /* Cambia el cursor al pasar el ratón */
+    transition: background-color 0.3s; /* Agrega una transición de color al botón */
+  }
+  
+  /* Estilo al pasar el ratón sobre los botones de "Quitar" en el carrito */
+  #carrito .carrito-remove-button:hover {
+    background-color: #c0392b; /* Cambia el color de fondo al pasar el ratón (rojo más oscuro) */
+  }
+  
