@@ -12,6 +12,7 @@
       "nombre": "Mauricio ",
       "apellido": "Leoz",
       "email": "mauri@gmail.com",
+<<<<<<< HEAD
       "telefono": "2235234566",
       "cantidad": "2",
       "id": 2
@@ -23,6 +24,11 @@
       "telefono": "2235644335",
       "cantidad": "1",
       "id": 3
+=======
+      "telefono": "02236830509",
+      "cantidad": "4",
+      "id": 2
+>>>>>>> desarrollo
     }
   ]
 }
