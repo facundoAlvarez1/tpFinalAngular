@@ -1,0 +1,30 @@
+/* Establece una cuadrícula de 5 columnas */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 productos por fila */
+    gap: 20px; /* Espacio entre productos */
+  }
+  
+  /* Estilos para cada producto en la cuadrícula */
+  .product-item {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+    background-color: #f9f9f9;
+  }
+  
+  .product-image {
+    max-width: 100%;
+    max-height: 150px;
+  }
+  
+  .product-title {
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  .product-price {
+    color: #e44d26;
+    font-weight: bold;
+  }
+  

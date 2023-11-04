@@ -7,6 +7,14 @@
       "telefono": "02236830509",
       "cantidad": "2",
       "id": 1
+    },
+    {
+      "nombre": "Mauricio ",
+      "apellido": "Leoz",
+      "email": "mauri@gmail.com",
+      "telefono": "02236830509",
+      "cantidad": "4",
+      "id": 2
     }
   ]
 }
