@@ -1,32 +1,44 @@
-/* Establece una cuadrícula de 5 columnas */
 .grid-container {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr); /* 5 productos por fila */
-    gap: 20px; /* Espacio entre productos */
-  }
-  
-  /* Estilos para cada producto en la cuadrícula */
-  .grid-item {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: center;
-    background-color: #f9f9f9;
-  }
-  
-  /* Estilos para la imagen del producto */
-  img {
-    max-width: 80%;
-    max-height: 200px;
-  }
-  
-  /* Estilos para el título del producto */
-  .product-title {
-    font-weight: bold;
-    margin-top: 10px;
-  }
-  
-  /* Estilos para el precio del producto */
-  .product-price {
-    color: #e44d26;
-    font-weight: bold;
-  }
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 productos por fila */
+  gap: 20px; /* Espacio entre productos */
+  text-align: center;
+}
+
+.grid-item {
+  border: 1px solid #ddd;
+  padding: 10px;
+  background-color: #f9f9f9;
+}
+
+/* Estilos para la imagen del producto */
+.grid-item img {
+  max-width: 100%;
+  max-height: 200px;
+}
+
+/* Estilos para el título del producto */
+.product-title {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* Estilos para el precio del producto */
+.product-price {
+  color: #e44d26;
+  font-weight: bold;
+}
+.boton-agregar {
+  display: block;
+  margin: 10px auto;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.boton-agregar:hover {
+  background-color: #0056b3;
+}

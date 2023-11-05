@@ -25,11 +25,15 @@
         Descubre nuestras opciones de regalo
     </h1>
     <div class="grid-container">
-        <div class="grid-item" *ngFor="let producto of productosFiltrados">
-            <img [src]="producto.imagen" width="300px" height="300px" alt="Imagen del producto">
-            <br>{{ producto.nombre }}<br><strong>{{ producto.precio | currency }}</strong>
+        <div *ngFor="let producto of productosFiltrados" class="grid-item">
+            <div class="product-item">
+                <img [src]="producto.imagen" width="300px" height="300px" alt="Imagen del producto">
+                <br>{{ producto.nombre }}<br><strong>{{ producto.precio | currency }}</strong>
+                <button (click)="agregarAlCarrito(producto)" class="boton-agregar">Agregar al carrito</button>
+            </div>
         </div>
     </div>
 </div>
+
 
 
