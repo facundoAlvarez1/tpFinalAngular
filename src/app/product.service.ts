@@ -1,82 +1,83 @@
 import { Injectable } from '@angular/core';
 
-export interface Producto {
-  nombre: string;
-  categoria: string;
-  precio: number;
-  imagen: string;
+export interface Product {
+  name: string;
+  category: string;
+  price: number;
+  img: string;
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-  productos: Producto[] = [
+  products: Product[] = [
     {
-      nombre: 'Alquiler Auto',
-      categoria: 'lunaDeMiel',
-      precio: 11000,
-      imagen: 'assets/images/lunaDeMiel/AlquilerAuto.jpg'
+        name: 'Alquiler Auto',
+        category: 'lunaDeMiel',
+        price: 11000,
+        img: 'assets/images/lunaDeMiel/AlquilerAuto.jpg'
     },
     {
-      nombre: 'Desayuno Continental',
-      categoria: 'lunaDeMiel',
-      precio: 5500,
-      imagen: 'assets/images/lunaDeMiel/desayunoContinental.jpg'
+        name: 'Desayuno Continental',
+        category: 'lunaDeMiel',
+        price: 5500,
+        img: 'assets/images/lunaDeMiel/desayunoContinental.jpg'
     },
     {
-      nombre: 'Estadia',
-      categoria: 'lunaDeMiel',
-      precio: 10000,
-      imagen: 'assets/images/lunaDeMiel/EstadiaNocturna.jpg'
+        name: 'Estadia',
+        category: 'lunaDeMiel',
+        price: 10000,
+        img: 'assets/images/lunaDeMiel/EstadiaNocturna.jpg'
     },
     {
-      nombre: 'Hotel',
-      categoria: 'lunaDeMiel',
-      precio: 20000,
-      imagen: 'assets/images/lunaDeMiel/Hotel.jpg'
+        name: 'Hotel',
+        category: 'lunaDeMiel',
+        price: 20000,
+        img: 'assets/images/lunaDeMiel/Hotel.jpg'
     },
     {
-      nombre: 'Nueva York',
-      categoria: 'lunaDeMiel',
-      precio: 10000,
-      imagen: 'assets/images/lunaDeMiel/nuevaYork.jpg'
+        name: 'Nueva York',
+        category: 'lunaDeMiel',
+        price: 10000,
+        img: 'assets/images/lunaDeMiel/nuevaYork.jpg'
     },
     {
-      nombre: 'Parapente',
-      categoria: 'Excursiones',
-      precio: 13000,
-      imagen: 'assets/images/Excursiones/Parapente.jpg'
+        name: 'Parapente',
+        category: 'Excursiones',
+        price: 13000,
+        img: 'assets/images/Excursiones/Parapente.jpg'
     },
     {
-      nombre: 'Playa Caribeña',
-      categoria: 'Excursiones',
-      precio: 13000,
-      imagen: 'assets/images/Excursiones/playaCaribeña.jpg'
+        name: 'Playa Caribeña',
+        category: 'Excursiones',
+        price: 13000,
+        img: 'assets/images/Excursiones/playaCaribeña.jpg'
     },
     {
-      nombre: 'Travesia',
-      categoria: 'Excursiones',
-      precio: 13000,
-      imagen: 'assets/images/Excursiones/Travesia.jpg'
+        name: 'Travesia',
+        category: 'Excursiones',
+        price: 13000,
+        img: 'assets/images/Excursiones/Travesia.jpg'
     },
     {
-      nombre: 'Yoga',
-      categoria: 'Excursiones',
-      precio: 13000,
-      imagen: 'assets/images/Excursiones/yoga.jpg'
+        name: 'Yoga',
+        category: 'Excursiones',
+        price: 13000,
+        img: 'assets/images/Excursiones/yoga.jpg'
     },
     {
-      nombre: 'Silla',
-      categoria: 'Cocina',
-      precio: 13000,
-      imagen: 'assets/images/Cocina/silla.jpg'
+        name: 'Silla',
+        category: 'Cocina',
+        price: 13000,
+        img: 'assets/images/Cocina/silla.jpg'
     },
 
     // Agrega más productos...
-  ];
+];
 
-  getProducts(): Producto[] {
-    return this.productos;
+
+  getProducts(): Product[] {
+    return this.products;
   }
 }

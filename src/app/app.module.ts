@@ -6,17 +6,17 @@ import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
 import { FilterComponent } from './filter/filter.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ProductosComponent } from './productos/productos.component';
+import { ProductsComponent } from './products/products.component';
 import { ProductService } from './product.service';
-import { CarritoService } from './carrito/carrito.service';
-import { CarritoComponent } from './carrito/carrito.component'; // Importa el servicio del carrito
+import { CarritoService } from './cart/cart.service';
+import { CarritoComponent } from './cart/cart.component'; // Importa el servicio del carrito
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FilterComponent,
-    ProductosComponent,
+    ProductsComponent,
     CarritoComponent,
   ],
   imports: [

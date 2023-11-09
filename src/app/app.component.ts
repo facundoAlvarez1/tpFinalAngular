@@ -61,7 +61,7 @@ export class AppComponent {
     telefono: this.formValue.telefono,
     cantidad: this.formValue.cantidad
   };
-      this.dataService.guardarRegistro(formData)
+      this.dataService.saveRecord(formData)
         .subscribe(
           (response) => {
             console.log('Registro guardado:', response);

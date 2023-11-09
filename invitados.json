@@ -31,6 +31,14 @@
       "telefono": "",
       "cantidad": "1",
       "id": 4
+    },
+    {
+      "nombre": "facu",
+      "apellido": "facu",
+      "email": "ajaja@asds.com",
+      "telefono": "",
+      "cantidad": "3",
+      "id": 5
     }
   ]
 }

@@ -9,7 +9,7 @@ export class DataService {
 
   constructor(private http: HttpClient) { }
 
-  guardarRegistro(formData: any) {
+  saveRecord(formData: any) {
     return this.http.post(this.apiUrl, formData);
   }
 }

@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { ProductService } from '../product.service'; // Importa el servicio y el tipo Producto
-import { CarritoService } from '../carrito/carrito.service';
+import { CarritoService } from '../cart/cart.service';
 
-interface Producto {
-  nombre: string;
-  categoria: string;
-  precio: number;
-  imagen: string;
+interface Product {
+  name: string;
+  category: string;
+  price: number;
+  img: string;
 }
 
 @Component({
@@ -15,53 +15,53 @@ interface Producto {
   styleUrls: ['./filter.component.css']
 })
 export class FilterComponent {
-  productos: Producto[] = [];
-  filtroCategoria: string = '';
-  filtroPrecio: string = '';
-  filtroBusqueda: string = '';
-  productosFiltrados: Producto[] = [];
+  products: Product[] = [];
+  filterCategory: string = '';
+  filterPrice: string = '';
+  filterSearch: string = '';
+  productsFiltered: Product[] = [];
 
   constructor(private productService: ProductService, private carritoService: CarritoService) {}
 
 
   ngOnInit() {
-    // En el ciclo de vida ngOnInit, obtén los productos del servicio
-    this.productos = this.productService.getProducts();
-    this.aplicarFiltro();
+    //  Obtiene los productos del servicio
+    this.products = this.productService.getProducts();
+    this.applyFilter();
   }
 
-  aplicarFiltro() {
-    console.log('Productos antes del filtro:', this.productos);
-    let productosFiltradosTemp = [...this.productos];
+  applyFilter() {
+   // console.log('Productos antes del filtro:', this.products);
+    let productsFilteredTemp = [...this.products];
 
-    console.log('Filtro Categoría:', this.filtroCategoria);
-    if (this.filtroCategoria) {
-      productosFiltradosTemp = productosFiltradosTemp.filter(producto => producto.categoria === this.filtroCategoria);
+    //console.log('Filtro Categoría:', this.filterCategory);
+    if (this.filterCategory) {
+      productsFilteredTemp = productsFilteredTemp.filter(producto => producto.category === this.filterCategory);
     }
 
-    console.log('Productos filtrados:', this.productosFiltrados);
-    if (this.filtroPrecio) {
-      const [minPrice, maxPrice] = this.filtroPrecio.split('-');
+    //console.log('Productos filtrados:', this.productsFiltered);
+    if (this.filterPrice) {
+      const [minPrice, maxPrice] = this.filterPrice.split('-');
       const minPriceInt = parseInt(minPrice);
       const maxPriceInt = parseInt(maxPrice);
 
-      productosFiltradosTemp = productosFiltradosTemp.filter(producto => {
-        return producto.precio >= minPriceInt && producto.precio <= maxPriceInt;
+      productsFilteredTemp = productsFilteredTemp.filter(producto => {
+        return producto.price >= minPriceInt && producto.price <= maxPriceInt;
       });
     }
 
     // Filtrar los productos por nombre si se ingresa una búsqueda
-    if (this.filtroBusqueda) {
-      productosFiltradosTemp = productosFiltradosTemp.filter(producto =>
-        producto.nombre.toLowerCase().includes(this.filtroBusqueda.toLowerCase())
+    if (this.filterSearch) {
+      productsFilteredTemp = productsFilteredTemp.filter(producto =>
+        producto.name.toLowerCase().includes(this.filterSearch.toLowerCase())
       );
     }
-    this.productosFiltrados = productosFiltradosTemp;
-    console.log('Productos filtrados:', this.productosFiltrados);
+    this.productsFiltered = productsFilteredTemp;
+    console.log('Productos filtrados:', this.productsFiltered);
   }
 
-  agregarAlCarrito(producto: Producto) {
+  addToCart(producto: Product) {
     // Utiliza el servicio del carrito para agregar el producto al carrito
-    this.carritoService.agregarAlCarrito(producto);
+    this.carritoService.addToCart(producto);
   }
 }
