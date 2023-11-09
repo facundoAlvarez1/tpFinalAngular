@@ -29,37 +29,51 @@
             <div id="portada-index"></div>
         </div>
 
-        
+
 
         <div id="sobre-mi" class="section">
-            <!-- Contenido de la sección "Sobre mi & FAQ's" -->
             <section class="secciones-principales" id="sobre-mi">
                 <h2 class="subtitulos">Nuestra Historia</h2>
                 <div id="contenedor-sobre-mi">
                     <div id="parrafos-sobre-mi">
-                        <p>Bienvenido a Fiesta y Boda, tu socio confiable para hacer realidad la boda de tus sueños.</p>
-                        <p>En Fiesta y Boda, entendemos que tu boda es un momento único y especial en tu vida. Es por
-                            eso que nos dedicamos a convertir tus ideas y deseos en una celebración de amor
-                            perfectamente ejecutada. Nuestro equipo altamente dedicado y apasionado está listo para
-                            trabajar contigo en cada detalle, desde la planificación inicial hasta la ejecución
-                            impecable en el día de tu boda.</p>
-                        <p>Nos enorgullece ofrecer un servicio personalizado que se adapta a tus preferencias y estilo
-                            individual. Desde la elección del lugar hasta la selección del menú y la decoración, nos
-                            aseguramos de que cada aspecto de tu boda refleje tu personalidad y visión. Nos
-                            comprometemos a hacer que este día sea inolvidable para ti y tus seres queridos, superando
-                            tus expectativas en cada paso del camino.</p>
-                        <br>
-                        <p>Confía en Fiesta y Boda para transformar tus sueños de boda en una realidad mágica.
-                            ¡Juntos, crearemos recuerdos duraderos de un día que recordarás con amor y felicidad para
-                            toda la vida!</p>
-                    </div>
-                    <a id="boton-contacto-talleres" href="#contacto">¡Quiero recibir información sobre la organizacion
-                        del evento !</a>
-                </div>
-            </section>
-            <app-filter></app-filter><!-- Componente filter-->
+                        <p>Nos conocimos en un rincón del cafe en la UTN hace ya una eternidad, entre libros y aromas
+                            a café recién molido. Éramos dos almas curiosas, él, Leonardo, con su risa contagiosa, y yo,
+                            Noelia, con mi afición por los acertijos imposibles.
 
-       <app-carrito></app-carrito>
+                            En aquel entonces, el tiempo parecía detenerse mientras compartíamos historias y sueños
+                            sobre servilletas manchadas de tinta y hojas de cuaderno llenas de garabatos. Sin darnos
+                            cuenta, nuestras vidas se entrelazaron como las tramas de una novela bien escrita.
+
+                            Desde aquel día, hemos pasado por todas las estaciones de la vida, enfrentando desafíos como
+                            un equipo y celebrando triunfos como cómplices inseparables. Leo se convirtió en mi
+                            confidente, mi apoyo incondicional, y juntos construimos una historia que es más grandiosa
+                            de lo que jamás habríamos imaginado.
+
+                            Así que, con la certeza de que el destino nos guió desde ese rincón de café hasta aquí, con
+                            alegría y amor, decidimos formalizar nuestro compromiso. Nos convertiremos en marido y
+                            mujer, llevando con nosotros todos los recuerdos de esos primeros días en los que éramos dos
+                            desconocidos que se encontraron en el lugar y momento precisos.
+
+                            Les extendemos una cálida invitación para que nos acompañen en este nuevo capítulo de
+                            nuestras vidas. La celebración será el 23/11/2023, y nos encantaría compartir la magia de
+                            este
+                            día con aquellos que han sido testigos de nuestra historia desde el principio.
+                            <br><br>
+                            Con afecto y gratitud,
+                            Leo y Noe
+                        </p>
+
+                        <br>
+
+                    </div>
+                </div>
+
+            </section>
+            <app-filter></app-filter>
+
+            <app-carrito></app-carrito>
+
+
             <section class="secciones-principales" id="faqs">
                 <h2 class="subtitulos">Preguntas frecuentes</h2>
                 <div class="accordion">
@@ -74,8 +88,8 @@
                     </div>
                 </div>
             </section>
-            <section class="secciones-principales" id="facebook-embebido">
-                <div id="contenedor-fb-posts">
+            <section class="secciones-principales">
+                <div>
                     <iframe style="border-radius:12px"
                         src="https://open.spotify.com/embed/playlist/2eax66N3ReK07ITlmKV39J?utm_source=generator"
                         width="100%" height="352" frameBorder="0" allowfullscreen=""
@@ -86,8 +100,8 @@
         </div>
 
         <div id="contacto" class="section">
-            <!-- Contenido de la sección "Contacto" -->
-            <h1 class='subtitulos' id="titulo-contacto">¡Creemos juntos tu siguiente Boda!</h1>
+            
+            <h1 class='subtitulos' id="titulo-contacto">¡Te esperamos para compartir nuestro gran momento!</h1>
             <div id="datos-adicionales-contacto">
                 <div class="datos-contacto-clasicos">
                     <p>Salon Mar del Plata(Buenos Aires)</p>
@@ -108,7 +122,7 @@
                     <p>Seguinos en redes sociales para descubrir nuestros proximos eventos y conocer las novedades:</p>
                     <div>
                         <i class="fab fa-instagram icono-contacto"></i>
-                        <p>@Fiesta.Boda/p>
+                        <p>@Fiesta.Boda</p>
                     </div>
                     <div>
                         <i class="fab fa-facebook icono-contacto"></i>
@@ -117,41 +131,46 @@
                 </div>
             </div>
 
-            <div id="contenedor-secciones-contacto" class="d-flex justify-content-center align-items-center">
+            <div id="contenedor-secciones-contacto" >
                 <section id="Confirmación" class="container">
-                    <form (ngSubmit)="onSubmit()" #formularioContacto ="ngForm" name="formulario-contacto-vickys-art"
+                    <form (ngSubmit)="onSubmit()" #formularioContacto="ngForm"
                         method="post">
                         <div class="row">
                             <div class="col-12">
                                 <div class="mb-3">
                                     <label for="nombre" class="form-label">Nombre</label>
-                                    <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="formValue.nombre"
-                                        pattern="[a-zA-Z ]*" title="Utiliza únicamente caracteres alfabéticos" required>
+                                    <input type="text" class="form-control" id="nombre" name="nombre"
+                                        [(ngModel)]="formValue.nombre" pattern="[a-zA-Z ]*"
+                                        title="Utiliza únicamente caracteres alfabéticos" required>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="mb-3">
                                     <label for="apellido" class="form-label">Apellido</label>
-                                    <input type="text" class="form-control" id="apellido" name="apellido" [(ngModel)]="formValue.apellido"
-                                        pattern="[a-zA-Z ]*" title="Utiliza únicamente caracteres alfabéticos" required>
+                                    <input type="text" class="form-control" id="apellido" name="apellido"
+                                        [(ngModel)]="formValue.apellido" pattern="[a-zA-Z ]*"
+                                        title="Utiliza únicamente caracteres alfabéticos" required>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="mb-3">
                                     <label for="email" class="form-label">Correo electrónico</label>
-                                    <input type="email" class="form-control" id="email" name="email" [(ngModel)]="formValue.email">
+                                    <input type="email" class="form-control" id="email" name="email"
+                                        [(ngModel)]="formValue.email">
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="mb-3">
                                     <label for="telefono" class="form-label">Teléfono (opcional)</label>
-                                    <input type="tel" class="form-control" id="telefono" name="telefono" [(ngModel)]="formValue.telefono">
+                                    <input type="tel" class="form-control" id="telefono" name="telefono"
+                                        [(ngModel)]="formValue.telefono">
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="mb-3">
                                     <label for="cantidad" class="form-label">Cantidad de integrantes</label>
-                                    <input type="text" class="form-control" id="cantidad" name="cantidad" [(ngModel)]="formValue.cantidad">
+                                    <input type="text" class="form-control" id="cantidad" name="cantidad"
+                                        [(ngModel)]="formValue.cantidad">
                                 </div>
                             </div>
                             <div class="col-12">
@@ -175,11 +194,7 @@
         <img class="logo-footer" src="assets/images/imagenPresentacion.jpg" alt="logo-redondo">
         <nav class="footer-menu">
         </nav>
-        <div class="footer-social-media ">
-            <a href="https://www.instagram.com/facu.alvarez4/"><i id="instagram" class="fab fa-instagram "></i></a>
-            <a href="https://www.facebook.com/vickysart.21"><i id="facebook" class="fab fa-facebook "></i></a>
-            <a href="https://wa.me/5491155555555"><i id="whatsapp" class="fab fa-whatsapp "></i></a>
-        </div>
+   
         <div class="footer-contacto ">
             <div><i class="fas fa-envelope "></i>
                 <p>Fiesta.boda@gmail.com</p>
@@ -191,9 +206,6 @@
         </div>
         <div id="firma">
             <p>Hecho con un gran equipo</p>
-            <a href="https://github.com/Solcii"><i id="github" class="fab fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/sol-micaela-potschka-506713130/"><i id="linkedin"
-                    class="fab fa-linkedin"></i></a>
         </div>
     </footer>
 </body>
