@@ -63,3 +63,13 @@
     margin-top: 10px; /* Añade espacio entre los campos de entrada y el botón */
   }
   
+
+  /* Agrega este estilo a tu archivo de estilos */
+.card-number-input.valid {
+  background-color: #ccffcc; /* Cambia el color de fondo según tus preferencias */
+}
+
+.card-logo img {
+  max-width: 100px; /* Ajusta el ancho máximo según tus necesidades */
+  max-height: 50px; /* Ajusta el alto máximo según tus necesidades */
+}

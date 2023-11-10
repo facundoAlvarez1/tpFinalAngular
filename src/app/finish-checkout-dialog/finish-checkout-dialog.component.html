@@ -13,19 +13,36 @@
     </ul>
     <p>Total: ${{ checkoutSummary.totalAmount | currency }}</p>
   </div>
-
+  
   <!-- Contenido para pago con tarjeta -->
   <div *ngIf="creditCardSelected">
-    <form>
+    <form #creditCardForm="ngForm"> <!-- Agrega una referencia al formulario -->
       <label>Número de tarjeta:</label>
-      <input type="text" [(ngModel)]="creditCardInfo.cardNumber" required>
-
+      <input
+        type="text"
+        name="cardNumber"
+        [(ngModel)]="creditCardInfo.cardNumber"
+        (input)="onCardNumberInput()"
+        required
+        pattern="\d*"
+        maxlength="16"
+        [class.valid]="isValidCardNumber()">
+      
+      <!-- Logo de la tarjeta -->
+      <div class="card-logo">
+      <img *ngIf="cardType === 'Visa'" src="assets/images/visa.jpg" alt="Visa Logo">
+      <img *ngIf="cardType === 'Mastercard'" src="assets/images/mastercard-logo.png" alt="Mastercard Logo">
+      <!-- Agrega más casos según los tipos de tarjetas que desees manejar -->
+    </div>
       <label>Titular de la tarjeta:</label>
-      <input type="text" [(ngModel)]="creditCardInfo.cardHolder" required>
-
+      <input type="text" name="cardHolder" [(ngModel)]="creditCardInfo.cardHolder" required>
+    
       <label>Fecha de vencimiento:</label>
-      <input type="text" [(ngModel)]="creditCardInfo.expirationDate" required>
-
+      <input type="text" name="expirationDate" [(ngModel)]="creditCardInfo.expirationDate" required>
+    
+      <label>Código de seguridad (CVV):</label>
+      <input type="text" name="cvv" [(ngModel)]="creditCardInfo.cvv" required>
+    
       <!-- Botón para procesar el pago con tarjeta -->
       <button mat-button (click)="processCreditCardPayment()">Pagar con Tarjeta</button>
     </form>

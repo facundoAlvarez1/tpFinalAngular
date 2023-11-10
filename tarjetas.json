@@ -1,0 +1,39 @@
+{
+  "tarjetas": [
+    {
+      "cardNumber": "1234567891234567",
+      "cardHolder": "facundo alvarez",
+      "expirationDate": "12-27",
+      "cvv": "456",
+      "id": 1
+    },
+    {
+      "cardNumber": "4543123412341234",
+      "cardHolder": "facundo alvarez",
+      "expirationDate": "12-28",
+      "cvv": "556",
+      "id": 2
+    },
+    {
+      "cardNumber": "4123123412341234",
+      "cardHolder": "Facundo Alvarez",
+      "expirationDate": "12-27",
+      "cvv": "345",
+      "id": 3
+    },
+    {
+      "cardNumber": "4245424542454245",
+      "cardHolder": "facundo alvarez",
+      "expirationDate": "12-27",
+      "cvv": "243",
+      "id": 4
+    },
+    {
+      "cardNumber": "4444444444444444",
+      "cardHolder": "facundo alvarez",
+      "expirationDate": "12-27",
+      "cvv": "456",
+      "id": 5
+    }
+  ]
+}
