@@ -1,11 +1,21 @@
+<!-- cart.component.html -->
 <div id="carrito" class="section">
-    <h2>Carrito de compras</h2>
+  <h2>Carrito de compras</h2>
+
+  <div *ngIf="productsInCart.length > 0">
     <ul>
       <li *ngFor="let producto of productsInCart">
         {{ producto.name }} - ${{ producto.price }}
         <button (click)="removeFromCart(producto)">Quitar</button>
       </li>
     </ul>
+
     <p>Total: {{ totalAmount | currency }}</p>
+    
+    <button mat-button (click)="finishCheckout()">Finalizar Compra</button>
   </div>
-  
+
+  <div *ngIf="productsInCart.length === 0">
+    <p>No hay productos en el carrito.</p>
+  </div>
+</div>

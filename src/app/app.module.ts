@@ -9,7 +9,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProductsComponent } from './products/products.component';
 import { ProductService } from './product.service';
 import { CarritoService } from './cart/cart.service';
-import { CarritoComponent } from './cart/cart.component'; // Importa el servicio del carrito
+import { CarritoComponent } from './cart/cart.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // Importa el servicio del carrito
+import { MatDialogModule } from '@angular/material/dialog';
+import { FinishCheckoutDialogComponent } from './finish-checkout-dialog/finish-checkout-dialog.component';
+import { TransferInstructionsDialogComponent } from './transfer-instructions-dialog/transfer-instructions-dialog.component';
 
 @NgModule({
   declarations: [
@@ -18,12 +22,16 @@ import { CarritoComponent } from './cart/cart.component'; // Importa el servicio
     FilterComponent,
     ProductsComponent,
     CarritoComponent,
+    FinishCheckoutDialogComponent,
+    TransferInstructionsDialogComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
   ],
   providers: [
     ProductService,

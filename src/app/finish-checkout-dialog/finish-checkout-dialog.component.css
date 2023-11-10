@@ -1,0 +1,65 @@
+/* Estilos para la ventana emergente de finalizar compra */
+::ng-deep .finish-checkout-dialog {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 30px; /* Aumenta el espacio interno */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 500px; /* Ajusta el ancho según tus necesidades */
+    margin: 0 auto; /* Centra la ventana emergente horizontalmente */
+  }
+  
+  ::ng-deep .finish-checkout-dialog h2 {
+    font-size: 24px;
+    color: #333;
+    margin: 0 0 20px;
+  }
+  
+  ::ng-deep .finish-checkout-dialog p {
+    font-size: 18px;
+    margin-top: 20px;
+    text-align: right;
+  }
+  
+  /* Estilos para los botones dentro de la ventana emergente */
+  ::ng-deep .finish-checkout-dialog button {
+    background-color: #e44d26;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 10px 0; /* Añade espacio vertical entre los botones */
+    width: 100%; /* Ocupa el ancho completo del contenedor */
+  }
+  
+  ::ng-deep .finish-checkout-dialog button:hover {
+    background-color: #c5371d;
+  }
+  
+  /* Estilos específicos para el formulario de tarjeta de crédito */
+  ::ng-deep .finish-checkout-dialog form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px; /* Añade espacio entre los botones y el formulario */
+  }
+  
+  ::ng-deep .finish-checkout-dialog form label {
+    margin-bottom: 5px;
+  }
+  
+  ::ng-deep .finish-checkout-dialog form input {
+    margin-bottom: 10px;
+    padding: 8px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  ::ng-deep .finish-checkout-dialog form button {
+    width: 100%; /* Ocupa el ancho completo del formulario */
+    margin-top: 10px; /* Añade espacio entre los campos de entrada y el botón */
+  }
+  

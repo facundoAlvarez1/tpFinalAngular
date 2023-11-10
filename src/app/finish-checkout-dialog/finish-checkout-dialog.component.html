@@ -1,0 +1,50 @@
+<!-- finish-checkout-dialog.component.html -->
+<div class="finish-checkout-dialog">
+  <h2>{{ data.title }}</h2>
+  <p>{{ data.message }}</p>
+
+  <!-- Resumen de la compra -->
+  <div *ngIf="checkoutSummary && checkoutSummary.products && checkoutSummary.products.length > 0">
+    <h3>Resumen de la compra:</h3>
+    <ul>
+      <li *ngFor="let product of checkoutSummary.products">
+        {{ product.name }} - ${{ product.price }}
+      </li>
+    </ul>
+    <p>Total: ${{ checkoutSummary.totalAmount | currency }}</p>
+  </div>
+
+  <!-- Contenido para pago con tarjeta -->
+  <div *ngIf="creditCardSelected">
+    <form>
+      <label>Número de tarjeta:</label>
+      <input type="text" [(ngModel)]="creditCardInfo.cardNumber" required>
+
+      <label>Titular de la tarjeta:</label>
+      <input type="text" [(ngModel)]="creditCardInfo.cardHolder" required>
+
+      <label>Fecha de vencimiento:</label>
+      <input type="text" [(ngModel)]="creditCardInfo.expirationDate" required>
+
+      <!-- Botón para procesar el pago con tarjeta -->
+      <button mat-button (click)="processCreditCardPayment()">Pagar con Tarjeta</button>
+    </form>
+  </div>
+
+  <!-- Contenido para transferencia bancaria -->
+  <div *ngIf="bankTransferSelected">
+    <p>Cuenta Bancaria:</p>
+    <p>CBU: {{ data.cbu }}</p>
+    <p>Titular de la cuenta: {{ data.accountHolder }}</p>
+  </div>
+
+  <!-- Botones para seleccionar método de pago -->
+  <button mat-button *ngIf="!creditCardSelected && !bankTransferSelected" (click)="payByCreditCard()">Tarjeta de Crédito/Débito</button>
+  <button mat-button *ngIf="!creditCardSelected && !bankTransferSelected" (click)="payByBankTransfer()">Transferencia Bancaria</button>
+
+  <!-- Botón para volver atrás -->
+  <button mat-button *ngIf="creditCardSelected || bankTransferSelected" (click)="goBack()">Volver Atrás</button>
+
+  <!-- Botón para cerrar la ventana -->
+  <button mat-button *ngIf="!creditCardSelected && !bankTransferSelected" (click)="onNoClick()">Cerrar</button>
+</div>
