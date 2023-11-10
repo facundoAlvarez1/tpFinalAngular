@@ -26,27 +26,30 @@
         required
         pattern="\d*"
         maxlength="16"
-        [class.valid]="isValidCardNumber()">
+        [class.valid]="isValidCardNumber()"
+        placeholder="Ejemplo: 0000000000000000">
       
       <!-- Logo de la tarjeta -->
       <div class="card-logo">
-      <img *ngIf="cardType === 'Visa'" src="assets/images/visa.jpg" alt="Visa Logo">
-      <img *ngIf="cardType === 'Mastercard'" src="assets/images/mastercard-logo.png" alt="Mastercard Logo">
-      <!-- Agrega más casos según los tipos de tarjetas que desees manejar -->
-    </div>
+        <img *ngIf="cardType === 'Visa'" src="assets/images/visa.jpg" alt="Visa Logo">
+        <img *ngIf="cardType === 'Mastercard'" src="assets/images/mastercard-logo.png" alt="Mastercard Logo">
+        <!-- Agrega más casos según los tipos de tarjetas que desees manejar -->
+      </div>
+      
       <label>Titular de la tarjeta:</label>
-      <input type="text" name="cardHolder" [(ngModel)]="creditCardInfo.cardHolder" required>
+      <input type="text" name="cardHolder" [(ngModel)]="creditCardInfo.cardHolder" required placeholder="Ejemplo: Nombre Apellido">
     
       <label>Fecha de vencimiento:</label>
-      <input type="text" name="expirationDate" [(ngModel)]="creditCardInfo.expirationDate" required>
+      <input type="text" name="expirationDate" [(ngModel)]="creditCardInfo.expirationDate" required placeholder="Ejemplo: 12/25">
     
       <label>Código de seguridad (CVV):</label>
-      <input type="text" name="cvv" [(ngModel)]="creditCardInfo.cvv" required>
+      <input type="text" name="cvv" [(ngModel)]="creditCardInfo.cvv" required placeholder="Ejemplo: 123">
     
       <!-- Botón para procesar el pago con tarjeta -->
       <button mat-button (click)="processCreditCardPayment()">Pagar con Tarjeta</button>
     </form>
   </div>
+  
 
   <!-- Contenido para transferencia bancaria -->
   <div *ngIf="bankTransferSelected">

@@ -1,6 +1,7 @@
 // finish-checkout-dialog.component.ts
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { FinishCheckoutService } from '../finish-checkout.service';
 
 @Component({
@@ -11,7 +12,7 @@ import { FinishCheckoutService } from '../finish-checkout.service';
 export class FinishCheckoutDialogComponent {
 
   cardType: string = '';
-
+  errorMessage: string = '';
 
   isValidCardNumber(): boolean {
     const cardNumberRegex = /^\d{16}$/;
@@ -32,7 +33,8 @@ export class FinishCheckoutDialogComponent {
   constructor(
     public dialogRef: MatDialogRef<FinishCheckoutDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private finishCheckoutService: FinishCheckoutService
+    private finishCheckoutService: FinishCheckoutService,
+    private snackBar: MatSnackBar
   ) { }
 
   onNoClick(): void {
@@ -60,8 +62,8 @@ export class FinishCheckoutDialogComponent {
       console.log(`Número de tarjeta: ${this.creditCardInfo.cardNumber}`);
       console.log(`Titular de la tarjeta: ${this.creditCardInfo.cardHolder}`);
       console.log(`Fecha de vencimiento: ${this.creditCardInfo.expirationDate}`);
-      console.log(`CVV: ${this.creditCardInfo.cvv}`); // Imprime el CVV
-  
+      console.log(`CVV: ${this.creditCardInfo.cvv}`);
+
       // Verifica los números iniciales y guarda la tarjeta
       const detectedCardType = this.identifyCardType(this.creditCardInfo.cardNumber);
       if (detectedCardType) {
@@ -76,26 +78,55 @@ export class FinishCheckoutDialogComponent {
           }
         );
       } else {
-        console.log('Tipo de tarjeta no admitido. Por favor, use una tarjeta válida.');
+        this.errorMessage = 'Tipo de tarjeta no admitido. Por favor, use una tarjeta válida.';
+        this.showSnackBar(this.errorMessage);
       }
-  
+
       this.cardType = detectedCardType; // Actualiza la propiedad cardType
       this.creditCardSelected = true;
       this.bankTransferSelected = false;
       this.updateCheckoutSummary();
     } else {
-      console.log('La información de la tarjeta es inválida. Por favor, complete todos los campos.');
+      this.errorMessage = 'Revise los datos ingresados por favor.';
+      this.showSnackBar(this.errorMessage);
     }
   }
 
   isValidCreditCardInfo(): boolean {
     const cardNumberRegex = /^\d{16}$/;
-    return (
+    const expirationDateRegex = /^(0[1-9]|1[0-2])\/\d{2}$/; // Formato MM/YY
+    const nameRegex = /^[a-zA-Z\s]+$/; // Expresión regular que permite solo letras y espacios
+    const cvvRegex = /^\d{3}$/; // Expresión regular que permite solo 3 dígitos
+
+    if (
       cardNumberRegex.test(this.creditCardInfo.cardNumber.trim()) &&
-      this.creditCardInfo.cardHolder.trim() !== '' &&
-      this.creditCardInfo.expirationDate.trim() !== '' &&
-      /^\d{3}$/.test(this.creditCardInfo.cvv.trim()) // Validar CVV con regex de 3 dígitos
-    );
+      nameRegex.test(this.creditCardInfo.cardHolder.trim()) && // Validar el nombre
+      expirationDateRegex.test(this.creditCardInfo.expirationDate.trim()) &&
+      cvvRegex.test(this.creditCardInfo.cvv.trim())
+    ) {
+      // Obtiene la fecha actual
+      const currentDate = new Date();
+
+      // Extrae el mes y el año de la fecha de vencimiento
+      const [expirationMonth, expirationYear] = this.creditCardInfo.expirationDate.split('/');
+
+      // Crea una nueva fecha con la fecha de vencimiento
+      const expirationDate = new Date(Number(`20${expirationYear}`), Number(expirationMonth) - 1);
+      // Restamos 1 al mes, ya que en JavaScript los meses van de 0 a 11
+
+      // Compara la fecha de vencimiento con la fecha actual
+      if (!(expirationDate > currentDate)) {
+        this.errorMessage = 'La fecha de vencimiento de la tarjeta es inválida. Por favor, ingrese una tarjeta válida.';
+        this.showSnackBar(this.errorMessage);
+        return false;
+      }
+
+      return true;
+    }
+
+    this.errorMessage = 'Revise los datos ingresados.';
+    this.showSnackBar(this.errorMessage);
+    return false;
   }
 
   identifyCardType(cardNumber: string): string {
@@ -109,8 +140,7 @@ export class FinishCheckoutDialogComponent {
     const mastercardRegex = /^5[1-5][0-9]{5,}|222[1-9][0-9]{3,}|22[3-9][0-9]{4,}|2[3-6][0-9]{5,}|27[01][0-9]{4,}|2720[0-9]{3,}$/;
     if (mastercardRegex.test(cardNumber)) {
       return 'Mastercard';
-    }
-    else {
+    } else {
       return 'Desconocido';
     }
   }
@@ -132,7 +162,6 @@ export class FinishCheckoutDialogComponent {
     return this.data.products.reduce((total: any, product: { price: any; }) => total + product.price, 0);
   }
 
-
   onCardNumberInput(): void {
     // Llama a detectCardType después de ingresar los primeros cuatro dígitos
     if (this.creditCardInfo.cardNumber.length >= 4) {
@@ -143,7 +172,7 @@ export class FinishCheckoutDialogComponent {
   detectCardType(cardNumber: string): void {
     const visaRegex = /^4[0-9]{0,15}$/; // Visa puede tener hasta 16 dígitos
     const mastercardRegex = /^5[1-5][0-9]{0,14}$/; // Mastercard puede tener hasta 16 dígitos
-  
+
     if (visaRegex.test(cardNumber)) {
       this.cardType = 'Visa';
     } else if (mastercardRegex.test(cardNumber)) {
@@ -153,5 +182,10 @@ export class FinishCheckoutDialogComponent {
     }
   }
 
-
+  // Método para mostrar una alerta utilizando MatSnackBar
+  private showSnackBar(message: string): void {
+    const config = new MatSnackBarConfig();
+    config.duration = 5000; // Duración de la alerta en milisegundos (opcional)
+    this.snackBar.open(message, 'Cerrar', config);
+  }
 }
