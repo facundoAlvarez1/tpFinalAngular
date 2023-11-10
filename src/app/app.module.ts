@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 import { MatDialogModule } from '@angular/material/dialog';
 import { FinishCheckoutDialogComponent } from './finish-checkout-dialog/finish-checkout-dialog.component';
 import { TransferInstructionsDialogComponent } from './transfer-instructions-dialog/transfer-instructions-dialog.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { TransferInstructionsDialogComponent } from './transfer-instructions-dia
     HttpClientModule,
     BrowserAnimationsModule,
     MatDialogModule,
+    MatSnackBarModule,
   ],
   providers: [
     ProductService,
