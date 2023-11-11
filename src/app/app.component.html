@@ -124,7 +124,8 @@
 
             <div id="contenedor-secciones-contacto">
                 <section id="Confirmación" class="container">
-                    <form (ngSubmit)="onSubmit()" #formularioContacto="ngForm" method="post">
+                    <form (ngSubmit)="onSubmit(formularioContacto)" #formularioContacto="ngForm" method="post">
+                        <h1><strong>CONFIRMACION DE ASISTENCIA</strong> </h1><br>   
                         <div class="row">
                             <div class="col-12">
                                 <div class="mb-3">
@@ -161,6 +162,13 @@
                                         [(ngModel)]="formValue.telefono" pattern="[0-9]{7,}"
                                         title="Ingresa un número de teléfono válido (mínimo 7 dígitos)"
                                         placeholder="Ejemplo: 1234567">
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="mb-3">
+                                    <label for="dni" class="form-label">DNI</label>
+                                    <input type="text" class="form-control" id="dni" name="dni" [(ngModel)]="formValue.dni"
+                                        pattern="[0-9]{8}" title="Ingresa un DNI válido (8 dígitos)" required placeholder="Ejemplo: 12345678">
                                 </div>
                             </div>
                             <div class="col-12">

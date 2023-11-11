@@ -81,6 +81,7 @@ throw new Error('Method not implemented.');
           response => {
             console.log('Tarjeta guardada con éxito:', response);
             this.showSnackBar('Pago con tarjeta exitoso. Gracias por tu compra.');
+            this.processDebit();
           },
           error => {
             console.error('Error al guardar la tarjeta:', error);
@@ -102,7 +103,7 @@ throw new Error('Method not implemented.');
       this.errorMessage = 'Revise los datos ingresados por favor.';
       this.showSnackBar(this.errorMessage);
     }
-  this.processDebit();
+  
   }
 
   clearCartAndCloseDialog(): void {

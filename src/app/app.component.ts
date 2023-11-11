@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { DataService } from './data.service';
+import { NgForm } from '@angular/forms';
 
 
 @Component({
@@ -56,46 +57,62 @@ throw new Error('Method not implemented.');
     apellido: '',
     email: '',
     telefono: '',
+    dni:'',
     cantidad: 1
+    
   };
 
 
 
 
-  onSubmit() {
-      if (this.formularioContacto.valid) {
-          const formData = {
+  onSubmit(formularioContacto: NgForm) {
+    if (formularioContacto.valid) {
+      this.dataService.getInvitados().subscribe(
+        (invitados: any[]) => {
+          if (invitados.some((invitado) => invitado.dni === this.formValue.dni)) {
+            this.errorMessage = 'El DNI ya está registrado.';
+            setTimeout(() => {
+              this.errorMessage = '';
+            }, 2000);
+          } else {
+            const formData = {
               nombre: this.formValue.nombre,
               apellido: this.formValue.apellido,
               email: this.formValue.email,
               telefono: this.formValue.telefono,
+              dni: this.formValue.dni,
               cantidad: this.formValue.cantidad
-          };
-  
-          this.dataService.saveRecord(formData)
-              .subscribe(
-                  (response) => {
-                      console.log('Registro guardado:', response);
-                      this.formValue = {
-                          nombre: '',
-                          apellido: '',
-                          email: '',
-                          telefono: '',
-                          cantidad: 0
-                      };
-                      this.successMessage = 'Registro exitoso, te esperamos en la fiesta';
-                      setTimeout(() => {
-                          this.successMessage = ''; // Borra el mensaje después de 5 segundos
-                      }, 3000);
-                  },
-                  (error) => {
-                      console.error('Error:', error);
-                  }
-              );
-      } else {
-          this.errorMessage = 'Revise los datos ingresados.';
-          console.log('Formulario no válido');
-      }
+            };
+
+            this.dataService.saveRecord(formData).subscribe(
+              (response) => {
+                console.log('Registro guardado:', response);
+                this.formValue = {
+                  nombre: '',
+                  apellido: '',
+                  email: '',
+                  telefono: '',
+                  cantidad: 0
+                };
+                this.successMessage = 'Registro exitoso, te esperamos en la fiesta';
+                setTimeout(() => {
+                  this.successMessage = ''; // Borra el mensaje después de 5 segundos
+                }, 3000);
+              },
+              (error) => {
+                console.error('Error:', error);
+              }
+            );
+          }
+        },
+        (error) => {
+          console.error('Error al obtener invitados:', error);
+        }
+      );
+    } else {
+      this.errorMessage = 'Revise los datos ingresados.';
+      console.log('Formulario no válido');
+    }
   }
   
 
@@ -104,6 +121,11 @@ disableManualInput(event: any) {
       event.preventDefault();
   }
   
+}
+
+private showSnackBar(message: string): void {
+  // Esta función probablemente debería estar en tu servicio de utilidad o un componente compartido
+  console.log(message);
 }
 
 }

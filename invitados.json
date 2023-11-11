@@ -5,120 +5,36 @@
       "apellido": "alvarez",
       "email": "facundoalvarez130@gmail.com",
       "telefono": "02236830509",
-      "cantidad": "2",
-      "id": 1
-    },
-    {
-      "nombre": "Mauricio ",
-      "apellido": "Leoz",
-      "email": "mauri@gmail.com",
-      "telefono": "02236830509",
-      "cantidad": "4",
-      "id": 2
-    },
-    {
-      "nombre": "Franco",
-      "apellido": "Argibel",
-      "email": "fargibel@hotmail.com",
-      "telefono": "",
-      "cantidad": "2",
-      "id": 3
-    },
-    {
-      "nombre": "Jau",
-      "apellido": "jaja",
-      "email": "ajaj@aa.com",
-      "telefono": "",
-      "cantidad": "1",
-      "id": 4
-    },
-    {
-      "nombre": "facu",
-      "apellido": "facu",
-      "email": "ajaja@asds.com",
-      "telefono": "",
-      "cantidad": "3",
-      "id": 5
-    },
-    {
-      "nombre": "facundo",
-      "apellido": "alvarez",
-      "email": "facundoalvarez130@gmail.com",
-      "telefono": "02236830509",
-      "cantidad": 122222,
-      "id": 6
-    },
-    {
-      "nombre": "facundo",
-      "apellido": "alvarez",
-      "email": "facundoalvarez130@gmail.com",
-      "telefono": "02236830509",
-      "cantidad": 122222,
-      "id": 7
-    },
-    {
-      "nombre": "facundo",
-      "apellido": "alvarez",
-      "email": "facundoalvarez130@gmail.com",
-      "telefono": "02236830509",
-      "cantidad": 1223,
-      "id": 8
-    },
-    {
-      "nombre": "facundo",
-      "apellido": "alvarez",
-      "email": "facundoalvarez130@gmail.com",
-      "telefono": "02236830509",
-      "cantidad": 4,
-      "id": 9
-    },
-    {
-      "nombre": "asaf",
-      "apellido": "asdasd",
-      "email": "facundoalvarez130@gmail.com",
-      "telefono": "02236830509",
-      "cantidad": 4,
-      "id": 10
-    },
-    {
-      "nombre": "facundo",
-      "apellido": "alvarez",
-      "email": "facundoalvarez130@gmail.com",
-      "telefono": "02236830509",
+      "dni": "40478938",
       "cantidad": 1,
-      "id": 11
+      "id": 1
     },
     {
       "nombre": "Evangelina",
       "apellido": "Lucero",
       "email": "evanlucero@hotmail.com",
       "telefono": "02236830509",
-      "cantidad": 3,
-      "id": 12
-    },
-    {
-      "nombre": "facundo",
-      "apellido": "alvarez",
-      "email": "facundoalvarez130@gmail.com",
-      "telefono": "02236830509",
+      "dni": "40478934",
       "cantidad": 1,
-      "id": 13
+      "id": 2
     },
     {
-      "nombre": "facundo",
-      "apellido": "alvarez",
-      "email": "facundoalvarez130@gmail.com",
+      "nombre": "MAURI",
+      "apellido": "LEOZ",
+      "email": "mauri@gmail.com",
       "telefono": "02236830509",
+      "dni": "40478933",
       "cantidad": 2,
-      "id": 14
+      "id": 3
     },
     {
       "nombre": "facundo",
       "apellido": "alvarez",
       "email": "facundoalvarez130@gmail.com",
       "telefono": "02236830509",
+      "dni": "40478931",
       "cantidad": 1,
-      "id": 15
+      "id": 4
     }
   ]
 }
