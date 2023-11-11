@@ -1,60 +1,15 @@
 {
   "tarjetas": [
     {
-      "cardNumber": "4444444444444444",
-      "cardHolder": "facundo alvarez",
-      "expirationDate": "12/27",
-      "cvv": "123",
-      "email": "facundoalvarez130@gmail.com",
+      "creditCardInfo": {
+        "cardNumber": "5555555555555555",
+        "cardHolder": "facundo alvarez",
+        "expirationDate": "12/26",
+        "cvv": "123",
+        "email": "facundoalvarez130@gmail.com"
+      },
+      "totalAmount": 26000,
       "id": 1
-    },
-    {
-      "cardNumber": "4444444444444444",
-      "cardHolder": "facundo alvarez",
-      "expirationDate": "12/27",
-      "cvv": "123",
-      "email": "facundoalvarez130@hola.com",
-      "id": 2
-    },
-    {
-      "cardNumber": "4444444444444444",
-      "cardHolder": "facundo alvarez",
-      "expirationDate": "12/27",
-      "cvv": "123",
-      "email": "facundoalvarez130@hola.com",
-      "id": 3
-    },
-    {
-      "cardNumber": "4444444444444444",
-      "cardHolder": "facundo alvarez",
-      "expirationDate": "12/25",
-      "cvv": "123",
-      "email": "facundoalvarez130@hotmail.com",
-      "id": 4
-    },
-    {
-      "cardNumber": "5555555555555555",
-      "cardHolder": "facundo alvarez",
-      "expirationDate": "12/25",
-      "cvv": "123",
-      "email": "facundoalvarez130@gmail.com",
-      "id": 5
-    },
-    {
-      "cardNumber": "5555555555555555",
-      "cardHolder": "facundo alvarez",
-      "expirationDate": "12/25",
-      "cvv": "123",
-      "email": "facundoalvarez130@gmail.com",
-      "id": 6
-    },
-    {
-      "cardNumber": "5555555555555555",
-      "cardHolder": "facundo alvarez",
-      "expirationDate": "12/34",
-      "cvv": "123",
-      "email": "facundoalvarez130@gmail.com",
-      "id": 7
     }
   ]
 }

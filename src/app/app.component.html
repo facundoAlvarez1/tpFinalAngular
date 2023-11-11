@@ -75,7 +75,7 @@
 
 
             <section class="secciones-principales" id="faqs">
-                <h2 class="subtitulos">Preguntas frecuentes</h2>
+                <h2 class="subtitulos">Información del evento</h2>
                 <div class="accordion">
                     <div *ngFor="let item of [1, 2, 3, 4, 5]; let i = index" class="accordion-item">
                         <button class="accordion-header" (click)="toggleAccordion(i)">
@@ -88,19 +88,10 @@
                     </div>
                 </div>
             </section>
-            <section class="secciones-principales">
-                <div>
-                    <iframe style="border-radius:12px"
-                        src="https://open.spotify.com/embed/playlist/2eax66N3ReK07ITlmKV39J?utm_source=generator"
-                        width="100%" height="352" frameBorder="0" allowfullscreen=""
-                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                        loading="lazy"></iframe>
-                </div>
-            </section>
         </div>
 
         <div id="contacto" class="section">
-            
+
             <h1 class='subtitulos' id="titulo-contacto">¡Te esperamos para compartir nuestro gran momento!</h1>
             <div id="datos-adicionales-contacto">
                 <div class="datos-contacto-clasicos">
@@ -138,23 +129,26 @@
                             <div class="col-12">
                                 <div class="mb-3">
                                     <label for="nombre" class="form-label">Nombre</label>
-                                    <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="formValue.nombre"
-                                        pattern="[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]*" title="Utiliza únicamente caracteres alfabéticos" required
+                                    <input type="text" class="form-control" id="nombre" name="nombre"
+                                        [(ngModel)]="formValue.nombre" pattern="[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]*"
+                                        title="Utiliza únicamente caracteres alfabéticos" required
                                         placeholder="Ejemplo: Juan">
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="mb-3">
                                     <label for="apellido" class="form-label">Apellido</label>
-                                    <input type="text" class="form-control" id="apellido" name="apellido" [(ngModel)]="formValue.apellido"
-                                        pattern="[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]*" title="Utiliza únicamente caracteres alfabéticos" required
+                                    <input type="text" class="form-control" id="apellido" name="apellido"
+                                        [(ngModel)]="formValue.apellido" pattern="[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]*"
+                                        title="Utiliza únicamente caracteres alfabéticos" required
                                         placeholder="Ejemplo: Pérez">
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="mb-3">
                                     <label for="email" class="form-label">Correo electrónico</label>
-                                    <input type="email" class="form-control" id="email" name="email" [(ngModel)]="formValue.email"
+                                    <input type="email" class="form-control" id="email" name="email"
+                                        [(ngModel)]="formValue.email"
                                         pattern="[a-zA-Z0-9._%+-]+@(gmail\.com|outlook\.com|hotmail\.com)$"
                                         title="Ingresa un correo válido de Gmail, Outlook o Hotmail" required
                                         placeholder="Ejemplo: juan@example.com">
@@ -163,16 +157,18 @@
                             <div class="col-12">
                                 <div class="mb-3">
                                     <label for="telefono" class="form-label">Teléfono (opcional)</label>
-                                    <input type="tel" class="form-control" id="telefono" name="telefono" [(ngModel)]="formValue.telefono"
-                                        pattern="[0-9]{7,}" title="Ingresa un número de teléfono válido (mínimo 7 dígitos)"
+                                    <input type="tel" class="form-control" id="telefono" name="telefono"
+                                        [(ngModel)]="formValue.telefono" pattern="[0-9]{7,}"
+                                        title="Ingresa un número de teléfono válido (mínimo 7 dígitos)"
                                         placeholder="Ejemplo: 1234567">
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="mb-3">
                                     <label for="cantidad" class="form-label">Cantidad de integrantes</label>
-                                    <input type="number" class="form-control" id="cantidad" name="cantidad" [(ngModel)]="formValue.cantidad"
-                                        min="1" max="4" title="Ingresa un valor entre 1 y 4" required placeholder="Ejemplo: 1"
+                                    <input type="number" class="form-control" id="cantidad" name="cantidad"
+                                        [(ngModel)]="formValue.cantidad" min="1" max="4"
+                                        title="Ingresa un valor entre 1 y 4" required placeholder="Ejemplo: 1"
                                         (keydown)="disableManualInput($event)">
                                 </div>
                                 <div *ngIf="errorMessage" class="text-danger">{{ errorMessage }}</div>
@@ -189,9 +185,10 @@
                     </form>
                 </section>
                 <section id="datos-de-contacto">
-                    <iframe id="mapa-google"
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26297.08640363214!2d-58.49052452954408!3d-34.52478724321706!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb6a6386ba5c9%3A0xb8039ed75861da4d!2sVicente%20L%C3%B3pez%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1634234061854!5m2!1ses!2sar"
-                        width="400" height="300" style="border:0;" allowfullscreen="false" loading="lazy"></iframe>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3146.723779738986!2d-57.69918982332869!3d-37.93688294108568!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x958528f3d9bebeef%3A0x11538590bd8c2541!2sLuxemburgo%20Haus!5e0!3m2!1ses-419!2sar!4v1699714403076!5m2!1ses-419!2sar"
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </section>
             </div>
 
@@ -201,7 +198,7 @@
         <img class="logo-footer" src="assets/images/imagenPresentacion.jpg" alt="logo-redondo">
         <nav class="footer-menu">
         </nav>
-   
+
         <div class="footer-contacto ">
             <div><i class="fas fa-envelope "></i>
                 <p>Fiesta.boda@gmail.com</p>

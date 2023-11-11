@@ -13,16 +13,23 @@ export class FinishCheckoutService {
 
   constructor(private http: HttpClient) {}
 
-  saveCreditCard(cardInfo: any) {
-    return this.http.post(this.apiUrl, cardInfo);
+  saveCreditCard(cardInfo: any, totalAmount: number): Observable<any> {
+    const data = {
+      creditCardInfo: cardInfo,
+      totalAmount: totalAmount
+    };
+
+    return this.http.post(this.apiUrl, data);
   }
+
 
   // Agrega un método para obtener todas las tarjetas guardadas
   getCreditCards() {
     return this.http.get(this.apiUrl);
   }
 
-  finishCheckout(creditCardInfo: any): Observable<any> {
+
+ finishCheckout(creditCardInfo: any): Observable<any> {
     // Validar números iniciales de la tarjeta (ej. para Visa o Mastercard)
     const cardNumberPrefix = creditCardInfo.cardNumber.slice(0, 1);
     const isValidCardType = cardNumberPrefix === '4' || cardNumberPrefix === '5'; // Puedes ajustar según los prefijos correctos

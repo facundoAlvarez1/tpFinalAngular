@@ -32,7 +32,7 @@ throw new Error('Method not implemented.');
     cardHolder: '',
     expirationDate: '',
     cvv: '',
-    email: ''
+    email: '',
   };
 
   checkoutSummary: any = {};
@@ -77,11 +77,10 @@ throw new Error('Method not implemented.');
       if (detectedCardType) {
         console.log(`Tarjeta ${detectedCardType} válida. Guardando...`);
         // Guardar la tarjeta y realizar otras acciones necesarias
-        this.finishCheckoutService.saveCreditCard(this.creditCardInfo).subscribe(
+        this.finishCheckoutService.saveCreditCard(this.creditCardInfo, this.calculateTotalAmount()).subscribe(
           response => {
             console.log('Tarjeta guardada con éxito:', response);
             this.showSnackBar('Pago con tarjeta exitoso. Gracias por tu compra.');
-
           },
           error => {
             console.error('Error al guardar la tarjeta:', error);

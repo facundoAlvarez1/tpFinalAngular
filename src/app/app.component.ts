@@ -31,22 +31,22 @@ throw new Error('Method not implemented.');
 
   getQuestion(index: number): string {
     const questions = [
-      '¿Como llegar al salón?',
-      '¿Que servicios incluye la fiesta?',
-      '¿Que capacidad tiene el salón?',
-      '¿Se pueden visitar las instalaciones?',
-      '¿Cuáles son los medios de pago?'
+      '¿Donde es la ceremonia religiosa?',
+      '¿Donde esta ubicado el salon?',
+      '¿Menu y bebida?',
+      '¿Horario de la fiesta?',
+      '¿Traslado a la vuelta?'
     ];
     return questions[index];
   }
 
   getAnswer(index: number): string {
     const answers = [
-      'Estamos ubicados en ruta 226 km 12 Mar del Plata. Contamos un un servicio de combi que conecta los puntos mas importantes de la ciudad.',
-      'Ofrecemos un servicio integral que abarca las fotos, el video, la musica, la decoración, barra de tragos, transporte y mucho mas...',
-      'Contamos con 2 salones. El mas pequeño tiene una capacidad para hasta 100 personas, mientras que el principal puede albergar hasta 150 invitados. Ambas opciones tienen acceso al amplio jardin exterior.',
-      'Si, con previa cita pueden venir a conocernos. Los esperamos.',
-      'Aceptamos los siguientes medios de pago: efectivo, tarjeta de débito y crédito, transferencia bancaria y MercadoPago..'
+      'La ceremonia se celebrara en la Parroquia San Jose ubicada en Matheu 3349.La misma dara inicio a las 17:00 del dia 23/11/2023.',
+      'La fiesta se celebrara en el salon Luxemburgo ubicado en ruta 226 km 12 Mar del Plata.Habra combis al finalizar la ceremonia para trasladarnos al salon.',
+      'Vamos a disfrutar de un menu criollo y tambien contamos con opciones vegetarianas / veganas y celiacas.Ademas tenemos una barra de tragos para disfrutar.',
+      'La fiesta inicia a las 20 hs y finaliza a las 04:30 am.',
+      'Las combis van a tener salidas al finalizar la fiesta , y tendran un recorrido por los principales puntos de la ciudad.'
     ];
     return answers[index];
   }
