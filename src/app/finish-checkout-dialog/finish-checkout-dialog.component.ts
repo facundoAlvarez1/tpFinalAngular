@@ -3,6 +3,8 @@ import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { FinishCheckoutService } from '../finish-checkout.service';
+import { CarritoService } from '../cart/cart.service';
+
 
 @Component({
   selector: 'app-finish-checkout-dialog',
@@ -10,9 +12,13 @@ import { FinishCheckoutService } from '../finish-checkout.service';
   styleUrls: ['./finish-checkout-dialog.component.css']
 })
 export class FinishCheckoutDialogComponent {
+process() {
+throw new Error('Method not implemented.');
+}
 
   cardType: string = '';
   errorMessage: string = '';
+  dialog: any;
 
   isValidCardNumber(): boolean {
     const cardNumberRegex = /^\d{16}$/;
@@ -25,7 +31,8 @@ export class FinishCheckoutDialogComponent {
     cardNumber: '',
     cardHolder: '',
     expirationDate: '',
-    cvv: ''
+    cvv: '',
+    email: ''
   };
 
   checkoutSummary: any = {};
@@ -34,7 +41,8 @@ export class FinishCheckoutDialogComponent {
     public dialogRef: MatDialogRef<FinishCheckoutDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private finishCheckoutService: FinishCheckoutService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private carritoService: CarritoService
   ) { }
 
   onNoClick(): void {
@@ -72,11 +80,16 @@ export class FinishCheckoutDialogComponent {
         this.finishCheckoutService.saveCreditCard(this.creditCardInfo).subscribe(
           response => {
             console.log('Tarjeta guardada con éxito:', response);
+            this.showSnackBar('Pago con tarjeta exitoso. Gracias por tu compra.');
+
           },
           error => {
             console.error('Error al guardar la tarjeta:', error);
           }
         );
+        
+        this.clearCartAndCloseDialog();
+
       } else {
         this.errorMessage = 'Tipo de tarjeta no admitido. Por favor, use una tarjeta válida.';
         this.showSnackBar(this.errorMessage);
@@ -90,6 +103,12 @@ export class FinishCheckoutDialogComponent {
       this.errorMessage = 'Revise los datos ingresados por favor.';
       this.showSnackBar(this.errorMessage);
     }
+  this.processDebit();
+  }
+
+  clearCartAndCloseDialog(): void {
+    this.carritoService.clearCart();
+    this.dialogRef.close();
   }
 
   isValidCreditCardInfo(): boolean {
@@ -97,12 +116,16 @@ export class FinishCheckoutDialogComponent {
     const expirationDateRegex = /^(0[1-9]|1[0-2])\/\d{2}$/; // Formato MM/YY
     const nameRegex = /^[a-zA-Z\s]+$/; // Expresión regular que permite solo letras y espacios
     const cvvRegex = /^\d{3}$/; // Expresión regular que permite solo 3 dígitos
+    const emailRegex = /^[^\s@]+@(gmail\.com|outlook\.com|hotmail\.com)$/; 
+
 
     if (
       cardNumberRegex.test(this.creditCardInfo.cardNumber.trim()) &&
       nameRegex.test(this.creditCardInfo.cardHolder.trim()) && // Validar el nombre
       expirationDateRegex.test(this.creditCardInfo.expirationDate.trim()) &&
-      cvvRegex.test(this.creditCardInfo.cvv.trim())
+      cvvRegex.test(this.creditCardInfo.cvv.trim()) &&
+      emailRegex.test(this.creditCardInfo.email.trim()) // Validar el correo electrónico
+
     ) {
       // Obtiene la fecha actual
       const currentDate = new Date();
@@ -187,5 +210,15 @@ export class FinishCheckoutDialogComponent {
     const config = new MatSnackBarConfig();
     config.duration = 5000; // Duración de la alerta en milisegundos (opcional)
     this.snackBar.open(message, 'Cerrar', config);
+  }
+  
+
+  processDebit() {
+  
+    console.log(this.carritoService);
+  // Aquí puedes incluir la lógica necesaria para procesar la finalización del pago
+    this.carritoService.clearCart();
+    // Cierra la ventana del diálogo
+    this.dialogRef.close();
   }
 }

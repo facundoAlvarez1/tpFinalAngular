@@ -44,7 +44,15 @@
     
       <label>Código de seguridad (CVV):</label>
       <input type="text" name="cvv" [(ngModel)]="creditCardInfo.cvv" required placeholder="Ejemplo: 123">
-    
+      
+      <label>Correo Electrónico:</label>
+      <input
+        type="email"
+        name="email"
+        [(ngModel)]="creditCardInfo.email"
+        required
+        placeholder="Ejemplo: usuario@dominio.com">
+        
       <!-- Botón para procesar el pago con tarjeta -->
       <button mat-button (click)="processCreditCardPayment()">Pagar con Tarjeta</button>
     </form>
@@ -56,6 +64,8 @@
     <p>Cuenta Bancaria:</p>
     <p>CBU: {{ data.cbu }}</p>
     <p>Titular de la cuenta: {{ data.accountHolder }}</p>
+    <p>Enviar comprobante de transferencia a: <strong>regaloNoeyLeo@gmail.com</strong></p>
+    <button mat-button (click)="processDebit()">Aceptar</button>
   </div>
 
   <!-- Botones para seleccionar método de pago -->

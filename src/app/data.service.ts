@@ -12,4 +12,6 @@ export class DataService {
   saveRecord(formData: any) {
     return this.http.post(this.apiUrl, formData);
   }
+
+  
 }

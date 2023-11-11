@@ -8,6 +8,13 @@ import { DataService } from './data.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  errorMessage: string = '';
+  successMessage: string = '';
+
+  calculateTotalInvitados(): import("rxjs").Observable<unknown>|import("rxjs").Subscribable<unknown>|Promise<unknown> {
+throw new Error('Method not implemented.');
+}
   @ViewChild('formularioContacto') formularioContacto: any; // Cambia ElementRef a any o a NgForm
   itemActivo: number | null = null;
 
@@ -49,52 +56,54 @@ export class AppComponent {
     apellido: '',
     email: '',
     telefono: '',
-    cantidad: 0
+    cantidad: 1
   };
+
+
+
 
   onSubmit() {
-    if (this.formularioContacto.valid) {
-      const formData = {
-    nombre: this.formValue.nombre,
-    apellido: this.formValue.apellido,
-    email: this.formValue.email,
-    telefono: this.formValue.telefono,
-    cantidad: this.formValue.cantidad
-  };
-      this.dataService.saveRecord(formData)
-        .subscribe(
-          (response) => {
-            console.log('Registro guardado:', response);
-            // Redirige o muestra un mensaje de confirmación
-          },
-          (error) => {
-            console.error('Error:', error);
-          }
-        );
-    } else {
-      console.log('Formulario no válido');
-    }
+      if (this.formularioContacto.valid) {
+          const formData = {
+              nombre: this.formValue.nombre,
+              apellido: this.formValue.apellido,
+              email: this.formValue.email,
+              telefono: this.formValue.telefono,
+              cantidad: this.formValue.cantidad
+          };
+  
+          this.dataService.saveRecord(formData)
+              .subscribe(
+                  (response) => {
+                      console.log('Registro guardado:', response);
+                      this.formValue = {
+                          nombre: '',
+                          apellido: '',
+                          email: '',
+                          telefono: '',
+                          cantidad: 0
+                      };
+                      this.successMessage = 'Registro exitoso, te esperamos en la fiesta';
+                      setTimeout(() => {
+                          this.successMessage = ''; // Borra el mensaje después de 5 segundos
+                      }, 3000);
+                  },
+                  (error) => {
+                      console.error('Error:', error);
+                  }
+              );
+      } else {
+          this.errorMessage = 'Revise los datos ingresados.';
+          console.log('Formulario no válido');
+      }
   }
+  
 
-
-
+disableManualInput(event: any) {
+  if ((event.key < '0' || event.key > '9') && event.key !== 'ArrowUp' && event.key !== 'ArrowDown' && event.key !== 'Backspace') {
+      event.preventDefault();
+  }
+  
 }
 
-/*
-function loadPage(sectionId: string) {
-  // Oculta todas las secciones
-  const sections = document.querySelectorAll<HTMLElement>('.section');
-  sections.forEach(section => {
-      section.style.display = 'none';
-  });
-
-  // Muestra la sección correspondiente
-  const section = document.getElementById(sectionId);
-  if (section) {
-      section.style.display = 'block';
-  }
 }
-
-// Carga la sección "Inicio" al cargar la página
-loadPage('inicio');
-*/

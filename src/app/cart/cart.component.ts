@@ -71,7 +71,9 @@ export class CarritoComponent {
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log('El diálogo de instrucciones de transferencia se cerró');
+      this.carritoService.clearCart();
       // Puedes realizar acciones adicionales después de cerrar el diálogo
     });
   }
+
 }
