@@ -1,14 +1,16 @@
 /* Estilos para la ventana emergente de finalizar compra */
 ::ng-deep .finish-checkout-dialog {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    padding: 30px; /* Aumenta el espacio interno */
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    max-width: 500px; /* Ajusta el ancho según tus necesidades */
-    margin: 0 auto; /* Centra la ventana emergente horizontalmente */
-  }
-  
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 30px; /* Aumenta el espacio interno */
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 500px; /* Ajusta el ancho según tus necesidades */
+  margin: 0 auto; /* Centra la ventana emergente horizontalmente */
+  overflow-y: auto; /* Esto habilita la barra de desplazamiento vertical si es necesario */
+  max-height: 80vh; /* Establece una altura máxima del 80% del viewport height */
+}
+
   ::ng-deep .finish-checkout-dialog h2 {
     font-size: 24px;
     color: #333;
@@ -72,4 +74,18 @@
 .card-logo img {
   max-width: 100px; /* Ajusta el ancho máximo según tus necesidades */
   max-height: 50px; /* Ajusta el alto máximo según tus necesidades */
+}
+
+
+.finish-checkout-dialog {
+  /* Otros estilos... */
+  overflow-y: auto; /* Esto habilita la barra de desplazamiento vertical si es necesario */
+  max-height: 500px; /* Establece una altura máxima para el resumen de compra para evitar que ocupe demasiado espacio */
+}
+
+
+.text-danger {
+  color: red;
+  font-size: 1.575rem;
+  margin-top: 4px;
 }

@@ -20,6 +20,8 @@ export class FilterComponent {
   filterPrice: string = '';
   filterSearch: string = '';
   productsFiltered: Product[] = [];
+  noResultsFound: boolean = false;
+
 
   constructor(private productService: ProductService, private carritoService: CarritoService) {}
 
@@ -57,6 +59,7 @@ export class FilterComponent {
       );
     }
     this.productsFiltered = productsFilteredTemp;
+    this.noResultsFound = this.productsFiltered.length === 0;
     console.log('Productos filtrados:', this.productsFiltered);
   }
 
@@ -64,4 +67,13 @@ export class FilterComponent {
     // Utiliza el servicio del carrito para agregar el producto al carrito
     this.carritoService.addToCart(producto);
   }
+
+  clearFilter() {
+    // Limpia todos los filtros
+    this.filterCategory = '';
+    this.filterPrice = '';
+    this.filterSearch = '';
+    this.applyFilter(); // Vuelve a aplicar los filtros para mostrar todos los productos
+  }
 }
+

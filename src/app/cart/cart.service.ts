@@ -21,4 +21,9 @@ export class CarritoService {
   totalAmount(): number {
     return this.products.reduce((total, producto) => total + producto.price, 0);
   }
+
+  clearCart() {
+    this.products = [];
+  }
+  
 }

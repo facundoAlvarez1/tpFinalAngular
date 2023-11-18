@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { DataService } from './data.service';
+import { NgForm } from '@angular/forms';
 
 
 @Component({
@@ -8,6 +9,20 @@ import { DataService } from './data.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  errorMessage: string = '';
+  successMessage: string = '';
+  errorMessageNombre: string = '';
+errorMessageApellido: string = '';
+errorMessageEmail: string = '';
+errorMessageTelefono: string = '';
+errorMessageDNI: string = '';
+errorMessageCantidad: string = '';
+
+
+  calculateTotalInvitados(): import("rxjs").Observable<unknown>|import("rxjs").Subscribable<unknown>|Promise<unknown> {
+throw new Error('Method not implemented.');
+}
   @ViewChild('formularioContacto') formularioContacto: any; // Cambia ElementRef a any o a NgForm
   itemActivo: number | null = null;
 
@@ -24,22 +39,22 @@ export class AppComponent {
 
   getQuestion(index: number): string {
     const questions = [
-      '¿Como llegar al salón?',
-      '¿Que servicios incluye la fiesta?',
-      '¿Que capacidad tiene el salón?',
-      '¿Se pueden visitar las instalaciones?',
-      '¿Cuáles son los medios de pago?'
+      '¿Donde es la ceremonia religiosa?',
+      '¿Donde esta ubicado el salon?',
+      '¿Menu y bebida?',
+      '¿Horario de la fiesta?',
+      '¿Traslado a la vuelta?'
     ];
     return questions[index];
   }
 
   getAnswer(index: number): string {
     const answers = [
-      'Estamos ubicados en ruta 226 km 12 Mar del Plata. Contamos un un servicio de combi que conecta los puntos mas importantes de la ciudad.',
-      'Ofrecemos un servicio integral que abarca las fotos, el video, la musica, la decoración, barra de tragos, transporte y mucho mas...',
-      'Contamos con 2 salones. El mas pequeño tiene una capacidad para hasta 100 personas, mientras que el principal puede albergar hasta 150 invitados. Ambas opciones tienen acceso al amplio jardin exterior.',
-      'Si, con previa cita pueden venir a conocernos. Los esperamos.',
-      'Aceptamos los siguientes medios de pago: efectivo, tarjeta de débito y crédito, transferencia bancaria y MercadoPago..'
+      'La ceremonia se celebrara en la Parroquia San Jose ubicada en Matheu 3349.La misma dara inicio a las 17:00 del dia 23/11/2023.',
+      'La fiesta se celebrara en el salon Luxemburgo ubicado en ruta 226 km 12 Mar del Plata.Habra combis al finalizar la ceremonia para trasladarnos al salon.',
+      'Vamos a disfrutar de un menu criollo y tambien contamos con opciones vegetarianas / veganas y celiacas.Ademas tenemos una barra de tragos para disfrutar.',
+      'La fiesta inicia a las 20 hs y finaliza a las 04:30 am.',
+      'Las combis van a tener salidas al finalizar la fiesta , y tendran un recorrido por los principales puntos de la ciudad.'
     ];
     return answers[index];
   }
@@ -49,52 +64,174 @@ export class AppComponent {
     apellido: '',
     email: '',
     telefono: '',
-    cantidad: 0
+    dni:'',
+    cantidad: 1
+    
   };
 
-  onSubmit() {
-    if (this.formularioContacto.valid) {
-      const formData = {
-    nombre: this.formValue.nombre,
-    apellido: this.formValue.apellido,
-    email: this.formValue.email,
-    telefono: this.formValue.telefono,
-    cantidad: this.formValue.cantidad
-  };
-      this.dataService.saveRecord(formData)
-        .subscribe(
-          (response) => {
-            console.log('Registro guardado:', response);
-            // Redirige o muestra un mensaje de confirmación
-          },
-          (error) => {
-            console.error('Error:', error);
+  validateName() {
+    if (!this.formValue.nombre) {
+      this.errorMessageNombre = 'El nombre es obligatorio';
+      return false;
+    }
+  
+    const regexNombre = /^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]*$/;
+    if (!regexNombre.test(this.formValue.nombre)) {
+      this.errorMessageNombre = 'Utiliza únicamente caracteres alfabéticos';
+      return false;
+    }
+  
+    this.errorMessageNombre = '';
+    return true;
+  }
+  
+  validateLastName() {
+    if (!this.formValue.apellido) {
+      this.errorMessageApellido = 'El apellido es obligatorio';
+      return false;
+    }
+  
+    const regexApellido = /^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]*$/;
+    if (!regexApellido.test(this.formValue.apellido)) {
+      this.errorMessageApellido = 'Utiliza únicamente caracteres alfabéticos';
+      return false;
+    }
+  
+    this.errorMessageApellido = '';
+    return true;
+  }
+  
+  validateEmail() {
+    if (!this.formValue.email) {
+      this.errorMessageEmail = 'El correo electrónico es obligatorio';
+      return false;
+    }
+  
+    const regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!regexEmail.test(this.formValue.email)) {
+      this.errorMessageEmail = 'Ingresa un correo electrónico válido';
+      return false;
+    }
+  
+    this.errorMessageEmail = '';
+    return true;
+  }
+  
+  validatePhone() {
+    if (this.formValue.telefono && !/^[0-9]{7,}$/.test(this.formValue.telefono)) {
+      this.errorMessageTelefono = 'Ingresa un número de teléfono válido (mínimo 7 dígitos)';
+      return false;
+    }
+  
+    this.errorMessageTelefono = '';
+    return true;
+  }
+  
+  validateDNI() {
+    if (!this.formValue.dni) {
+      this.errorMessageDNI = 'El DNI es obligatorio';
+      return false;
+    }
+  
+    if (!/^[0-9]{8}$/.test(this.formValue.dni)) {
+      this.errorMessageDNI = 'Ingresa un DNI válido (8 dígitos)';
+      return false;
+    }
+  
+    this.errorMessageDNI = '';
+    return true;
+  }
+  
+  validateQuantity() {
+    if (!this.formValue.cantidad) {
+      this.errorMessageCantidad = 'La cantidad es obligatoria';
+      return false;
+    }
+  
+    // Puedes agregar lógica adicional si es necesario, por ejemplo, verificar si está en el rango permitido
+    // Por ahora, solo se valida que sea un número entero
+    if (!Number.isInteger(this.formValue.cantidad)) {
+      this.errorMessageCantidad = 'Ingresa un valor entero';
+      return false;
+    }
+  
+    this.errorMessageCantidad = '';
+    return true;
+  }
+
+
+
+  onSubmit(formularioContacto: NgForm) {
+    const nombreValido = this.validateName();
+    const apellidoValido = this.validateLastName();
+    const emailValido = this.validateEmail();
+    const telefonoValido = this.validatePhone();
+    const dniValido = this.validateDNI();
+    const cantidadValida = this.validateQuantity();
+
+  if (formularioContacto.valid && nombreValido && apellidoValido && emailValido && telefonoValido && dniValido && cantidadValida) {
+      this.dataService.getInvitados().subscribe(
+        (invitados: any[]) => {
+          if (invitados.some((invitado) => invitado.dni === this.formValue.dni)) {
+            this.errorMessage = 'El DNI ya está registrado.';
+            setTimeout(() => {
+              this.errorMessage = '';
+            }, 2000);
+          } else {
+            const formData = {
+              nombre: this.formValue.nombre,
+              apellido: this.formValue.apellido,
+              email: this.formValue.email,
+              telefono: this.formValue.telefono,
+              dni: this.formValue.dni,
+              cantidad: this.formValue.cantidad
+            };
+
+            this.dataService.saveRecord(formData).subscribe(
+              (response) => {
+                console.log('Registro guardado:', response);
+                this.formValue = {
+                  nombre: '',
+                  apellido: '',
+                  email: '',
+                  telefono: '',
+                  cantidad: 0
+                };
+                this.successMessage = 'Registro exitoso, te esperamos en la fiesta';
+                setTimeout(() => {
+                  this.successMessage = ''; // Borra el mensaje después de 5 segundos
+                }, 3000);
+              },
+              (error) => {
+                console.error('Error:', error);
+              }
+            );
           }
-        );
+        },
+        (error) => {
+          console.error('Error al obtener invitados:', error);
+        }
+      );
     } else {
+      this.errorMessage = 'Revise los datos ingresados.';
+      setTimeout(() => {
+        this.errorMessage = ''; // Borra el mensaje después de 5 segundos
+      }, 3000);
       console.log('Formulario no válido');
     }
   }
+  
 
-
-
-}
-
-/*
-function loadPage(sectionId: string) {
-  // Oculta todas las secciones
-  const sections = document.querySelectorAll<HTMLElement>('.section');
-  sections.forEach(section => {
-      section.style.display = 'none';
-  });
-
-  // Muestra la sección correspondiente
-  const section = document.getElementById(sectionId);
-  if (section) {
-      section.style.display = 'block';
+disableManualInput(event: any) {
+  if ((event.key < '0' || event.key > '9') && event.key !== 'ArrowUp' && event.key !== 'ArrowDown' && event.key !== 'Backspace') {
+      event.preventDefault();
   }
+  
 }
 
-// Carga la sección "Inicio" al cargar la página
-loadPage('inicio');
-*/
+private showSnackBar(message: string): void {
+  // Esta función probablemente debería estar en tu servicio de utilidad o un componente compartido
+  console.log(message);
+}
+
+}

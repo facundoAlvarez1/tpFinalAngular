@@ -37,7 +37,7 @@ export class ProductService {
         img: 'assets/images/lunaDeMiel/Hotel.jpg'
     },
     {
-        name: 'Nueva York',
+        name: 'Cafetera Nueva York',
         category: 'lunaDeMiel',
         price: 10000,
         img: 'assets/images/lunaDeMiel/nuevaYork.jpg'
@@ -72,7 +72,109 @@ export class ProductService {
         price: 13000,
         img: 'assets/images/Cocina/silla.jpg'
     },
-
+    {
+        name: 'Sillon',
+        category: 'Cocina',
+        price: 40000,
+        img: 'assets/images/Cocina/sillon.jpg'
+    },
+    {
+        name: 'Taza oporto',
+        category: 'Cocina',
+        price: 12000,
+        img: 'assets/images/Cocina/tazaOporto.jpg'
+    }
+    ,
+    {
+        name: 'Taza de Te',
+        category: 'Cocina',
+        price: 12000,
+        img: 'assets/images/Cocina/tazaTe.jpg'
+    }
+    ,
+    {
+        name: 'Velas',
+        category: 'Cocina',
+        price: 12000,
+        img: 'assets/images/Cocina/velas.jpg'
+    }
+    ,
+    {
+        name: 'Voucher de Bebida',
+        category: 'Cocina',
+        price: 12000,
+        img: 'assets/images/Cocina/voucherBebida.jpg'
+    }
+    ,
+    {
+        name: 'Mesa Peko',
+        category: 'Cocina',
+        price: 12000,
+        img: 'assets/images/Cocina/mesaPeko.jpg'
+    }
+    ,
+    {
+        name: 'Lampara de Epoca',
+        category: 'Cocina',
+        price: 12000,
+        img: 'assets/images/Cocina/lamparasEpoca.jpg'
+    }
+    ,
+    {
+        name: 'Horno Industrial',
+        category: 'Cocina',
+        price: 12000,
+        img: 'assets/images/Cocina/horno.jpg'
+    }
+    ,
+    {
+        name: 'Cuchillo de Plata',
+        category: 'Cocina',
+        price: 12000,
+        img: 'assets/images/Cocina/cuchilloPlata.jpg'
+    }
+    ,
+    {
+        name: 'Tostadora',
+        category: 'Cocina',
+        price: 12000,
+        img: 'assets/images/Cocina/tostadora.jpg'
+    }
+    ,
+    {
+        name: 'Excursion de Bicicleta',
+        category: 'lunaDeMiel',
+        price: 12000,
+        img: 'assets/images/lunaDeMiel/excursionBicicleta.jpg'
+    }
+    ,
+    {
+        name: 'Ticket en Disney',
+        category: 'Excursiones',
+        price: 12000,
+        img: 'assets/images/Excursiones/tickeyDisney.jpg'
+    }
+    ,
+    {
+        name: 'Tour por la Ciudad',
+        category: 'Excursiones',
+        price: 12000,
+        img: 'assets/images/Excursiones/tourCiudad.jpg'
+    }
+    ,
+    {
+        name: 'Alquiler Velero',
+        category: 'lunaDeMiel',
+        price: 12000,
+        img: 'assets/images/lunaDeMiel/alquilerVelero.jpg'
+    }
+    ,
+    {
+        name: 'Dia de SPA',
+        category: 'lunaDeMiel',
+        price: 12000,
+        img: 'assets/images/lunaDeMiel/spa.jpg'
+    }
     // Agrega más productos...
 ];
 
