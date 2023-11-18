@@ -11,66 +11,79 @@
         {{ product.name }} - ${{ product.price }}
       </li>
     </ul>
-    <p>Total: ${{ checkoutSummary.totalAmount | currency }}</p>
+    <p>Total: {{ checkoutSummary.totalAmount | currency }}</p>
   </div>
-  
-  <!-- Contenido para pago con tarjeta -->
-  <div *ngIf="creditCardSelected">
-    <form #creditCardForm="ngForm"> <!-- Agrega una referencia al formulario -->
-      <label>Número de tarjeta:</label>
-      <input
-        type="text"
-        name="cardNumber"
-        [(ngModel)]="creditCardInfo.cardNumber"
-        (input)="onCardNumberInput()"
-        required
-        pattern="\d*"
-        maxlength="16"
-        [class.valid]="isValidCardNumber()"
-        placeholder="Ejemplo: 0000000000000000">
-      
-      <!-- Logo de la tarjeta -->
-      <div class="card-logo">
-        <img *ngIf="cardType === 'Visa'" src="assets/images/visa.jpg" alt="Visa Logo">
-        <img *ngIf="cardType === 'Mastercard'" src="assets/images/mastercard-logo.png" alt="Mastercard Logo">
-        <!-- Agrega más casos según los tipos de tarjetas que desees manejar -->
-      </div>
-      
-      <label>Titular de la tarjeta:</label>
-      <input type="text" name="cardHolder" [(ngModel)]="creditCardInfo.cardHolder" required placeholder="Ejemplo: Nombre Apellido">
-    
-      <label>Fecha de vencimiento:</label>
-      <input type="text" name="expirationDate" [(ngModel)]="creditCardInfo.expirationDate" required placeholder="Ejemplo: 12/25">
-    
-      <label>Código de seguridad (CVV):</label>
-      <input type="text" name="cvv" [(ngModel)]="creditCardInfo.cvv" required placeholder="Ejemplo: 123">
-      
-      <label>Correo Electrónico:</label>
-      <input
-        type="email"
-        name="email"
-        [(ngModel)]="creditCardInfo.email"
-        required
-        placeholder="Ejemplo: usuario@dominio.com">
-        
-      <!-- Botón para procesar el pago con tarjeta -->
-      <button mat-button (click)="processCreditCardPayment()">Pagar con Tarjeta</button>
-    </form>
-  </div>
-  
+
+
+ <!-- Contenido para pago con tarjeta -->
+<div *ngIf="creditCardSelected">
+  <form #creditCardForm="ngForm"> <!-- Agrega una referencia al formulario -->
+    <label>Número de tarjeta:</label>
+    <input type="text" name="cardNumber" [(ngModel)]="creditCardInfo.cardNumber" (input)="onCardNumberInput()"
+      required pattern="\d*" maxlength="16" [class.valid]="isValidCardNumber()"
+      placeholder="Ejemplo: 0000000000000000">
+    <div *ngIf="creditCardForm.controls['cardNumber'].touched && creditCardForm.controls['cardNumber'].hasError('pattern')">
+      Por favor, ingrese solo números.
+    </div>
+    <div *ngIf="creditCardForm.controls['cardNumber'].touched && creditCardForm.controls['cardNumber'].hasError('maxlength')">
+      El número de tarjeta debe tener 16 dígitos.
+    </div>
+
+    <div class="card-logo" *ngIf="showCardLogo">
+      <img *ngIf="cardType === 'Visa'" src="assets/images/visa.jpg" alt="Visa Logo">
+      <img *ngIf="cardType === 'Mastercard'" src="assets/images/mastercard-logo.png" alt="Mastercard Logo">
+      <!-- Agrega más casos según los tipos de tarjetas que desees manejar -->
+    </div>
+
+    <label>Titular de la tarjeta:</label>
+    <input type="text" name="cardHolder" [(ngModel)]="creditCardInfo.cardHolder" required
+      placeholder="Ejemplo: Nombre Apellido">
+    <div *ngIf="creditCardForm.controls['cardHolder'].touched && creditCardForm.controls['cardHolder'].hasError('required')">
+      Este campo es obligatorio y no puede estar vacío.
+    </div>
+
+    <label>Fecha de vencimiento:</label>
+    <input type="text" name="expirationDate" [(ngModel)]="creditCardInfo.expirationDate" required
+      placeholder="Ejemplo: 12/25">
+    <div *ngIf="creditCardForm.controls['expirationDate'].touched && creditCardForm.controls['expirationDate'].hasError('required')">
+      Este campo es obligatorio y no puede estar vacío.
+    </div>
+
+    <label>Código de seguridad (CVV):</label>
+    <input type="text" name="cvv" [(ngModel)]="creditCardInfo.cvv" required placeholder="Ejemplo: 123">
+    <div *ngIf="creditCardForm.controls['cvv'].touched && creditCardForm.controls['cvv'].hasError('required')">
+      Este campo es obligatorio y no puede estar vacío.
+    </div>
+
+    <label>Correo Electrónico:</label>
+    <input type="email" name="email" [(ngModel)]="creditCardInfo.email" required
+      placeholder="Ejemplo: usuario@dominio.com">
+    <div *ngIf="creditCardForm.controls['email'].touched && creditCardForm.controls['email'].hasError('required')">
+      Este campo es obligatorio y no puede estar vacío.
+    </div>
+    <div *ngIf="creditCardForm.controls['email'].touched && creditCardForm.controls['email'].hasError('email')">
+      Por favor, ingrese un correo electrónico válido.
+    </div>
+
+    <!-- Botón para procesar el pago con tarjeta -->
+    <button mat-button (click)="processCreditCardPayment()">Pagar con Tarjeta</button>
+  </form>
+</div>
 
   <!-- Contenido para transferencia bancaria -->
   <div *ngIf="bankTransferSelected">
     <p>Cuenta Bancaria:</p>
     <p>CBU: {{ data.cbu }}</p>
     <p>Titular de la cuenta: {{ data.accountHolder }}</p>
-    <p>Enviar comprobante de transferencia a: <strong>regaloNoeyLeo@gmail.com</strong></p>
+    <p>Enviar comprobante de transferencia a: <strong>regaloNoeyLeo&#64;gmail.com</strong></p>
     <button mat-button (click)="processDebit()">Aceptar</button>
   </div>
 
   <!-- Botones para seleccionar método de pago -->
-  <button mat-button *ngIf="!creditCardSelected && !bankTransferSelected" (click)="payByCreditCard()">Tarjeta de Crédito/Débito</button>
-  <button mat-button *ngIf="!creditCardSelected && !bankTransferSelected" (click)="payByBankTransfer()">Transferencia Bancaria</button>
+  <button mat-button *ngIf="!creditCardSelected && !bankTransferSelected" (click)="payByCreditCard()">Tarjeta de
+    Crédito/Débito</button>
+  <button mat-button *ngIf="!creditCardSelected && !bankTransferSelected" (click)="payByBankTransfer()">Transferencia
+    Bancaria</button>
 
   <!-- Botón para volver atrás -->
   <button mat-button *ngIf="creditCardSelected || bankTransferSelected" (click)="goBack()">Volver Atrás</button>

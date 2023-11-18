@@ -17,13 +17,19 @@
     <label for="busqueda">Buscar producto:</label>
     <input id="busqueda" type="text" [(ngModel)]="filterSearch">
 
-    <button (click)="applyFilter()">Aplicar filtro</button>
+    <button (click)="applyFilter()">Aplicar Filtro</button>
+    &nbsp;&nbsp;
+    <button (click)="clearFilter()">Limpiar Filtro</button>
+
 </div>
 
 <div id="productos" class="section">
     <h1 class="subtitulos" id="titulo-pagina-productos">
         Descubre nuestras opciones de regalo
     </h1>
+    <div *ngIf="noResultsFound" class="text-danger">
+        No se encontraron regalos con los filtros seleccionados.
+      </div>
     <div class="grid-container">
         <div *ngFor="let producto of productsFiltered" class="grid-item">
             <div class="product-item">

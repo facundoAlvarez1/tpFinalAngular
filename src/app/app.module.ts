@@ -15,6 +15,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { FinishCheckoutDialogComponent } from './finish-checkout-dialog/finish-checkout-dialog.component';
 import { TransferInstructionsDialogComponent } from './transfer-instructions-dialog/transfer-instructions-dialog.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -34,6 +36,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     BrowserAnimationsModule,
     MatDialogModule,
     MatSnackBarModule,
+    ReactiveFormsModule,
   ],
   providers: [
     ProductService,

@@ -31,6 +31,10 @@ export class CarritoComponent {
     this.carritoService.removeFromCart(producto);
   }
 
+  clearCart() {
+    this.carritoService.clearCart();
+  }
+
   finishCheckout() {
     console.clear();
   

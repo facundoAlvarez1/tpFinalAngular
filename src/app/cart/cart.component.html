@@ -11,7 +11,8 @@
     </ul>
 
     <p>Total: {{ totalAmount | currency }}</p>
-    
+    <button (click)="clearCart()">Vaciar Carrito</button>
+    &nbsp;&nbsp;
     <button mat-button (click)="finishCheckout()">Finalizar Compra</button>
   </div>
 

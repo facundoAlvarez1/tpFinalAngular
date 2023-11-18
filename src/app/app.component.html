@@ -99,7 +99,7 @@
                     <p></p>
                     <div>
                         <i class="fas fa-envelope icono-contacto"></i>
-                        <p>Fiesta.Boda@gmail.com</p>
+                        <p>Fiesta.Boda&#64;gmail.com</p>
                     </div>
                     <div>
                         <i class="fas fa-phone icono-contacto"></i>
@@ -113,7 +113,7 @@
                     <p>Seguinos en redes sociales para descubrir nuestros proximos eventos y conocer las novedades:</p>
                     <div>
                         <i class="fab fa-instagram icono-contacto"></i>
-                        <p>@Fiesta.Boda</p>
+                        <p>&#64;Fiesta.Boda</p>
                     </div>
                     <div>
                         <i class="fab fa-facebook icono-contacto"></i>
@@ -121,7 +121,7 @@
                     </div>
                 </div>
             </div>
-
+            
             <div id="contenedor-secciones-contacto">
                 <section id="Confirmación" class="container">
                     <form (ngSubmit)="onSubmit(formularioContacto)" #formularioContacto="ngForm" method="post">
@@ -131,56 +131,69 @@
                                 <div class="mb-3">
                                     <label for="nombre" class="form-label">Nombre</label>
                                     <input type="text" class="form-control" id="nombre" name="nombre"
-                                        [(ngModel)]="formValue.nombre" pattern="[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]*"
-                                        title="Utiliza únicamente caracteres alfabéticos" required
+                                        [(ngModel)]="formValue.nombre" required
+                                        (input)="validateName()"
                                         placeholder="Ejemplo: Juan">
+                                    <div *ngIf="errorMessageNombre" class="text-danger">{{ errorMessageNombre }}</div><br>
                                 </div>
                             </div>
+                            
                             <div class="col-12">
                                 <div class="mb-3">
                                     <label for="apellido" class="form-label">Apellido</label>
                                     <input type="text" class="form-control" id="apellido" name="apellido"
-                                        [(ngModel)]="formValue.apellido" pattern="[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]*"
-                                        title="Utiliza únicamente caracteres alfabéticos" required
+                                        [(ngModel)]="formValue.apellido" required
+                                        (input)="validateLastName()"
                                         placeholder="Ejemplo: Pérez">
+                                    <div *ngIf="errorMessageApellido" class="text-danger">{{ errorMessageApellido }}</div><br>
                                 </div>
                             </div>
+                            
                             <div class="col-12">
                                 <div class="mb-3">
                                     <label for="email" class="form-label">Correo electrónico</label>
                                     <input type="email" class="form-control" id="email" name="email"
-                                        [(ngModel)]="formValue.email"
-                                        pattern="[a-zA-Z0-9._%+-]+@(gmail\.com|outlook\.com|hotmail\.com)$"
-                                        title="Ingresa un correo válido de Gmail, Outlook o Hotmail" required
+                                        [(ngModel)]="formValue.email" required
+                                        (input)="validateEmail()"
                                         placeholder="Ejemplo: juan@example.com">
+                                    <div *ngIf="errorMessageEmail" class="text-danger">{{ errorMessageEmail }}</div><br>
                                 </div>
                             </div>
+                            
                             <div class="col-12">
                                 <div class="mb-3">
                                     <label for="telefono" class="form-label">Teléfono (opcional)</label>
                                     <input type="tel" class="form-control" id="telefono" name="telefono"
-                                        [(ngModel)]="formValue.telefono" pattern="[0-9]{7,}"
-                                        title="Ingresa un número de teléfono válido (mínimo 7 dígitos)"
+                                        [(ngModel)]="formValue.telefono"
+                                        (input)="validatePhone()"
                                         placeholder="Ejemplo: 1234567">
+                                    <div *ngIf="errorMessageTelefono" class="text-danger">{{ errorMessageTelefono }}</div><br>
                                 </div>
                             </div>
+                            
                             <div class="col-12">
                                 <div class="mb-3">
                                     <label for="dni" class="form-label">DNI</label>
-                                    <input type="text" class="form-control" id="dni" name="dni" [(ngModel)]="formValue.dni"
-                                        pattern="[0-9]{8}" title="Ingresa un DNI válido (8 dígitos)" required placeholder="Ejemplo: 12345678">
+                                    <input type="text" class="form-control" id="dni" name="dni"
+                                        [(ngModel)]="formValue.dni" required
+                                        (input)="validateDNI()"
+                                        placeholder="Ejemplo: 12345678">
+                                    <div *ngIf="errorMessageDNI" class="text-danger">{{ errorMessageDNI }}</div><br>
                                 </div>
                             </div>
+                            
                             <div class="col-12">
                                 <div class="mb-3">
                                     <label for="cantidad" class="form-label">Cantidad de integrantes</label>
                                     <input type="number" class="form-control" id="cantidad" name="cantidad"
-                                        [(ngModel)]="formValue.cantidad" min="1" max="4"
-                                        title="Ingresa un valor entre 1 y 4" required placeholder="Ejemplo: 1"
-                                        (keydown)="disableManualInput($event)">
+                                        [(ngModel)]="formValue.cantidad" min="1" max="4" required
+                                        (input)="validateQuantity()"
+                                        placeholder="Ejemplo: 1">
+                                    <div *ngIf="errorMessageCantidad" class="text-danger">{{ errorMessageCantidad }}</div><br>
                                 </div>
-                                <div *ngIf="errorMessage" class="text-danger">{{ errorMessage }}</div>
+                                <div *ngIf="errorMessage" class="text-danger">{{ errorMessage }}</div><br>
                             </div>
+
                             <div class="col-12">
                                 <div class="mb-3">
                                     <button type="submit" class="btn btn-dark">Asistiré</button>
@@ -209,7 +222,7 @@
 
         <div class="footer-contacto ">
             <div><i class="fas fa-envelope "></i>
-                <p>Fiesta.boda@gmail.com</p>
+                <p>Fiesta.boda&#64;gmail.com</p>
             </div>
             <div>
                 <i class="fas fa-phone "></i>

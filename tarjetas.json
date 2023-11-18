@@ -21,6 +21,17 @@
       },
       "totalAmount": 13000,
       "id": 2
+    },
+    {
+      "creditCardInfo": {
+        "cardNumber": "4444444444444444",
+        "cardHolder": "facundo alvarez",
+        "expirationDate": "12/25",
+        "cvv": "123",
+        "email": "facundoalvarez130@gmail.com"
+      },
+      "totalAmount": 22000,
+      "id": 3
     }
   ]
 }
