@@ -38,14 +38,14 @@ export class FinishCheckoutDialogComponent {
   ) { }
   
 
-
   isValidCardNumber(): boolean {
     const cardNumberRegex = /^\d{16}$/;
     return cardNumberRegex.test(this.creditCardInfo.cardNumber.trim());
   }
   
+
   isValidCardHolder(): boolean {
-    const nameRegex = /^[a-zA-Z\s]+$/;
+    const nameRegex = /^[a-zA-Z\s]{1,50}$/;
     return nameRegex.test(this.creditCardInfo.cardHolder.trim());
   }
   
@@ -64,6 +64,15 @@ export class FinishCheckoutDialogComponent {
     return emailRegex.test(this.creditCardInfo.email.trim());
   }
   
+  formatExpirationDate(event: any): void {
+    const inputValue = event.target.value.replace(/[^0-9]/g, ''); // Elimina caracteres no numéricos
+    if (inputValue.length > 2) {
+      const formattedValue = inputValue.substring(0, 2) + '/' + inputValue.substring(2);
+      this.creditCardInfo.expirationDate = formattedValue;
+    } else {
+      this.creditCardInfo.expirationDate = inputValue;
+    }
+  }
 
   onNoClick(): void {
     this.dialogRef.close();
@@ -220,3 +229,5 @@ export class FinishCheckoutDialogComponent {
     this.dialogRef.close();
   }
 }
+
+

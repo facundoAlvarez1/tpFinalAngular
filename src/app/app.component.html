@@ -174,7 +174,7 @@
                             <div class="col-12">
                                 <div class="mb-3">
                                     <label for="dni" class="form-label">DNI</label>
-                                    <input type="text" class="form-control" id="dni" name="dni"
+                                    <input type="text" class="form-control" id="dni" name="dni" maxlength="8"
                                         [(ngModel)]="formValue.dni" required
                                         (input)="validateDNI()"
                                         placeholder="Ejemplo: 12345678">

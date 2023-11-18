@@ -71,6 +71,15 @@
       "dni": "40471111",
       "cantidad": 3,
       "id": 8
+    },
+    {
+      "nombre": "facundo",
+      "apellido": "alvarez",
+      "email": "facundoalvarez130@gmail.com",
+      "telefono": "02236830509",
+      "dni": "55555554",
+      "cantidad": 1,
+      "id": 9
     }
   ]
 }

@@ -15,20 +15,24 @@
   </div>
 
 
- <!-- Contenido para pago con tarjeta -->
+<!-- Contenido para pago con tarjeta -->
 <div *ngIf="creditCardSelected">
   <form #creditCardForm="ngForm"> <!-- Agrega una referencia al formulario -->
+    <!-- Otros campos -->
+
     <label>Número de tarjeta:</label>
     <input type="text" name="cardNumber" [(ngModel)]="creditCardInfo.cardNumber" (input)="onCardNumberInput()"
       required pattern="\d*" maxlength="16" [class.valid]="isValidCardNumber()"
       placeholder="Ejemplo: 0000000000000000">
-    <div *ngIf="creditCardForm.controls['cardNumber'].touched && creditCardForm.controls['cardNumber'].hasError('pattern')">
+    <div class="text-danger" *ngIf="creditCardForm.controls['cardNumber'].touched && creditCardForm.controls['cardNumber'].hasError('pattern')">
       Por favor, ingrese solo números.
     </div>
-    <div *ngIf="creditCardForm.controls['cardNumber'].touched && creditCardForm.controls['cardNumber'].hasError('maxlength')">
+    <div class="text-danger" *ngIf="creditCardForm.controls['cardNumber'].touched && creditCardForm.controls['cardNumber'].hasError('maxlength')">
       El número de tarjeta debe tener 16 dígitos.
     </div>
-
+    <div class="text-danger" *ngIf="creditCardForm.controls['cardNumber'].touched && !isValidCardNumber()">
+      El número de tarjeta debe ser numérico y tener 16 dígitos.
+    </div>
     <div class="card-logo" *ngIf="showCardLogo">
       <img *ngIf="cardType === 'Visa'" src="assets/images/visa.jpg" alt="Visa Logo">
       <img *ngIf="cardType === 'Mastercard'" src="assets/images/mastercard-logo.png" alt="Mastercard Logo">
@@ -38,30 +42,39 @@
     <label>Titular de la tarjeta:</label>
     <input type="text" name="cardHolder" [(ngModel)]="creditCardInfo.cardHolder" required
       placeholder="Ejemplo: Nombre Apellido">
-    <div *ngIf="creditCardForm.controls['cardHolder'].touched && creditCardForm.controls['cardHolder'].hasError('required')">
+    <div class="text-danger" *ngIf="creditCardForm.controls['cardHolder'].touched && creditCardForm.controls['cardHolder'].hasError('required')">
       Este campo es obligatorio y no puede estar vacío.
+    </div>
+    <div  class="text-danger"*ngIf="creditCardForm.controls['cardHolder'].touched && !isValidCardHolder()">
+      El titular de la tarjeta debe contener solo letras.
     </div>
 
     <label>Fecha de vencimiento:</label>
-    <input type="text" name="expirationDate" [(ngModel)]="creditCardInfo.expirationDate" required
-      placeholder="Ejemplo: 12/25">
-    <div *ngIf="creditCardForm.controls['expirationDate'].touched && creditCardForm.controls['expirationDate'].hasError('required')">
+    <input type="text" name="expirationDate" [(ngModel)]="creditCardInfo.expirationDate" required maxlength="5"
+      placeholder="Ejemplo: MM/YY" (input)="formatExpirationDate($event)">
+    <div class="text-danger" *ngIf="creditCardForm.controls['expirationDate'].touched && creditCardForm.controls['expirationDate'].hasError('required')">
       Este campo es obligatorio y no puede estar vacío.
+    </div>
+    <div class="text-danger" *ngIf="creditCardForm.controls['expirationDate'].touched && !isValidExpirationDate()">
+      La fecha de vencimiento debe tener el formato MM/YY.
     </div>
 
     <label>Código de seguridad (CVV):</label>
-    <input type="text" name="cvv" [(ngModel)]="creditCardInfo.cvv" required placeholder="Ejemplo: 123">
-    <div *ngIf="creditCardForm.controls['cvv'].touched && creditCardForm.controls['cvv'].hasError('required')">
+    <input type="text" name="cvv" [(ngModel)]="creditCardInfo.cvv" required maxlength="3" placeholder="Ejemplo: 123">
+    <div class="text-danger" *ngIf="creditCardForm.controls['cvv'].touched && creditCardForm.controls['cvv'].hasError('required')">
       Este campo es obligatorio y no puede estar vacío.
+    </div>
+    <div class="text-danger" *ngIf="creditCardForm.controls['cvv'].touched && !isValidCVV()">
+      El CVV debe ser numérico y tener 3 dígitos.
     </div>
 
     <label>Correo Electrónico:</label>
     <input type="email" name="email" [(ngModel)]="creditCardInfo.email" required
       placeholder="Ejemplo: usuario@dominio.com">
-    <div *ngIf="creditCardForm.controls['email'].touched && creditCardForm.controls['email'].hasError('required')">
+    <div class="text-danger" *ngIf="creditCardForm.controls['email'].touched && creditCardForm.controls['email'].hasError('required')">
       Este campo es obligatorio y no puede estar vacío.
     </div>
-    <div *ngIf="creditCardForm.controls['email'].touched && creditCardForm.controls['email'].hasError('email')">
+    <div class="text-danger" *ngIf="creditCardForm.controls['email'].touched && !isValidEmail()">
       Por favor, ingrese un correo electrónico válido.
     </div>
 
@@ -69,6 +82,7 @@
     <button mat-button (click)="processCreditCardPayment()">Pagar con Tarjeta</button>
   </form>
 </div>
+
 
   <!-- Contenido para transferencia bancaria -->
   <div *ngIf="bankTransferSelected">
