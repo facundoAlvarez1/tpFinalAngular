@@ -18,7 +18,6 @@
 </head>
 
 <body>
-    <!-- Componente Header-->
     <app-header></app-header> <!-- Componente Header-->
     <main>
         <div id="inicio" class="section" style="margin-bottom: 80px;">
@@ -28,8 +27,6 @@
             </a>
             <div id="portada-index"></div>
         </div>
-
-
 
         <div id="sobre-mi" class="section">
             <section class="secciones-principales" id="sobre-mi">
@@ -62,9 +59,7 @@
                             Con afecto y gratitud,
                             Leo y Noe
                         </p>
-
                         <br>
-
                     </div>
                 </div>
 
@@ -88,6 +83,7 @@
                     </div>
                 </div>
             </section>
+
         </div>
 
         <div id="contacto" class="section">
@@ -122,99 +118,10 @@
                 </div>
             </div>
             
-            <div id="contenedor-secciones-contacto">
-                <section id="Confirmación" class="container">
-                    <form (ngSubmit)="onSubmit(formularioContacto)" #formularioContacto="ngForm" method="post">
-                        <h1><strong>CONFIRMACION DE ASISTENCIA</strong> </h1><br>   
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="mb-3">
-                                    <label for="nombre" class="form-label">Nombre</label>
-                                    <input type="text" class="form-control" id="nombre" name="nombre"
-                                        [(ngModel)]="formValue.nombre" required
-                                        (input)="validateName()"
-                                        placeholder="Ejemplo: Juan">
-                                    <div *ngIf="errorMessageNombre" class="text-danger">{{ errorMessageNombre }}</div><br>
-                                </div>
-                            </div>
-                            
-                            <div class="col-12">
-                                <div class="mb-3">
-                                    <label for="apellido" class="form-label">Apellido</label>
-                                    <input type="text" class="form-control" id="apellido" name="apellido"
-                                        [(ngModel)]="formValue.apellido" required
-                                        (input)="validateLastName()"
-                                        placeholder="Ejemplo: Pérez">
-                                    <div *ngIf="errorMessageApellido" class="text-danger">{{ errorMessageApellido }}</div><br>
-                                </div>
-                            </div>
-                            
-                            <div class="col-12">
-                                <div class="mb-3">
-                                    <label for="email" class="form-label">Correo electrónico</label>
-                                    <input type="email" class="form-control" id="email" name="email"
-                                        [(ngModel)]="formValue.email" required
-                                        (input)="validateEmail()"
-                                        placeholder="Ejemplo: juan@example.com">
-                                    <div *ngIf="errorMessageEmail" class="text-danger">{{ errorMessageEmail }}</div><br>
-                                </div>
-                            </div>
-                            
-                            <div class="col-12">
-                                <div class="mb-3">
-                                    <label for="telefono" class="form-label">Teléfono (opcional)</label>
-                                    <input type="tel" class="form-control" id="telefono" name="telefono"
-                                        [(ngModel)]="formValue.telefono"
-                                        (input)="validatePhone()"
-                                        placeholder="Ejemplo: 1234567">
-                                    <div *ngIf="errorMessageTelefono" class="text-danger">{{ errorMessageTelefono }}</div><br>
-                                </div>
-                            </div>
-                            
-                            <div class="col-12">
-                                <div class="mb-3">
-                                    <label for="dni" class="form-label">DNI</label>
-                                    <input type="text" class="form-control" id="dni" name="dni" maxlength="8"
-                                        [(ngModel)]="formValue.dni" required
-                                        (input)="validateDNI()"
-                                        placeholder="Ejemplo: 12345678">
-                                    <div *ngIf="errorMessageDNI" class="text-danger">{{ errorMessageDNI }}</div><br>
-                                </div>
-                            </div>
-                            
-                            <div class="col-12">
-                                <div class="mb-3">
-                                    <label for="cantidad" class="form-label">Cantidad de integrantes</label>
-                                    <input type="number" class="form-control" id="cantidad" name="cantidad"
-                                        [(ngModel)]="formValue.cantidad" min="1" max="4" required
-                                        (input)="validateQuantity()"
-                                        placeholder="Ejemplo: 1">
-                                    <div *ngIf="errorMessageCantidad" class="text-danger">{{ errorMessageCantidad }}</div><br>
-                                </div>
-                                <div *ngIf="errorMessage" class="text-danger">{{ errorMessage }}</div><br>
-                            </div>
-
-                            <div class="col-12">
-                                <div class="mb-3">
-                                    <button type="submit" class="btn btn-dark">Asistiré</button>
-                                </div>
-                                <div *ngIf="successMessage" class="alert alert-success" role="alert">
-                                    {{ successMessage }}
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </section>
-                <section id="datos-de-contacto">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3146.723779738986!2d-57.69918982332869!3d-37.93688294108568!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x958528f3d9bebeef%3A0x11538590bd8c2541!2sLuxemburgo%20Haus!5e0!3m2!1ses-419!2sar!4v1699714403076!5m2!1ses-419!2sar"
-                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </section>
-            </div>
-
+         <app-assistance-form></app-assistance-form>
         </div>
     </main>
+
     <footer>
         <img class="logo-footer" src="assets/images/imagenPresentacion.jpg" alt="logo-redondo">
         <nav class="footer-menu">

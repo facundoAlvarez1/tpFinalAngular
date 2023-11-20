@@ -53,11 +53,8 @@ export class CarritoComponent {
       console.log('El diálogo se cerró');
   
       if (result && result.back) {
-        // El usuario eligió volver atrás
         console.log('Volver atrás');
-        // Agrega la lógica para manejar el caso de volver atrás
       } else {
-        // Puedes realizar acciones adicionales después de cerrar el diálogo
         this.checkoutDetails = result;
       }
     });
@@ -67,7 +64,7 @@ export class CarritoComponent {
     const dialogRef = this.dialog.open(TransferInstructionsDialogComponent, {
       width: '400px',
       data: {
-        cbu: '1234567890123456789012', // CBU específico
+        cbu: '1234567890123456789012', 
         name: 'Nombre Apellido', // Nombre y Apellido de la persona
         products: this.checkoutDetails.products, // Detalle de la compra
       },
@@ -76,7 +73,6 @@ export class CarritoComponent {
     dialogRef.afterClosed().subscribe((result) => {
       console.log('El diálogo de instrucciones de transferencia se cerró');
       this.carritoService.clearCart();
-      // Puedes realizar acciones adicionales después de cerrar el diálogo
     });
   }
 

@@ -16,6 +16,7 @@ import { FinishCheckoutDialogComponent } from './finish-checkout-dialog/finish-c
 import { TransferInstructionsDialogComponent } from './transfer-instructions-dialog/transfer-instructions-dialog.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AssistanceFormComponent } from './assistance-form/assistance-form.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     CarritoComponent,
     FinishCheckoutDialogComponent,
     TransferInstructionsDialogComponent,
+    AssistanceFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,7 +42,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   providers: [
     ProductService,
-    CarritoService, // Agrega el CarritoService a la lista de proveedores
+    CarritoService,
   ],
   bootstrap: [AppComponent],
 })

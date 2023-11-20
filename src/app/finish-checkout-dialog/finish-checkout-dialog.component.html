@@ -1,4 +1,3 @@
-<!-- finish-checkout-dialog.component.html -->
 <div class="finish-checkout-dialog">
   <h2>{{ data.title }}</h2>
   <p>{{ data.message }}</p>
@@ -17,8 +16,7 @@
 
 <!-- Contenido para pago con tarjeta -->
 <div *ngIf="creditCardSelected">
-  <form #creditCardForm="ngForm"> <!-- Agrega una referencia al formulario -->
-    <!-- Otros campos -->
+  <form #creditCardForm="ngForm">
 
     <label>Número de tarjeta:</label>
     <input type="text" name="cardNumber" [(ngModel)]="creditCardInfo.cardNumber" (input)="onCardNumberInput()"
@@ -36,7 +34,6 @@
     <div class="card-logo" *ngIf="showCardLogo">
       <img *ngIf="cardType === 'Visa'" src="assets/images/visa.jpg" alt="Visa Logo">
       <img *ngIf="cardType === 'Mastercard'" src="assets/images/mastercard-logo.png" alt="Mastercard Logo">
-      <!-- Agrega más casos según los tipos de tarjetas que desees manejar -->
     </div>
 
     <label>Titular de la tarjeta:</label>

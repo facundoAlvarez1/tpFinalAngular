@@ -69,7 +69,7 @@ export class ProductService {
     {
         name: 'Silla',
         category: 'Cocina',
-        price: 13000,
+        price: 21000,
         img: 'assets/images/Cocina/silla.jpg'
     },
     {
@@ -95,7 +95,7 @@ export class ProductService {
     {
         name: 'Velas',
         category: 'Cocina',
-        price: 12000,
+        price: 3000,
         img: 'assets/images/Cocina/velas.jpg'
     }
     ,
@@ -123,28 +123,28 @@ export class ProductService {
     {
         name: 'Horno Industrial',
         category: 'Cocina',
-        price: 12000,
+        price: 28000,
         img: 'assets/images/Cocina/horno.jpg'
     }
     ,
     {
         name: 'Cuchillo de Plata',
         category: 'Cocina',
-        price: 12000,
+        price: 7000,
         img: 'assets/images/Cocina/cuchilloPlata.jpg'
     }
     ,
     {
         name: 'Tostadora',
         category: 'Cocina',
-        price: 12000,
+        price: 5000,
         img: 'assets/images/Cocina/tostadora.jpg'
     }
     ,
     {
         name: 'Excursion de Bicicleta',
         category: 'lunaDeMiel',
-        price: 12000,
+        price: 5000,
         img: 'assets/images/lunaDeMiel/excursionBicicleta.jpg'
     }
     ,
@@ -158,24 +158,23 @@ export class ProductService {
     {
         name: 'Tour por la Ciudad',
         category: 'Excursiones',
-        price: 12000,
+        price: 8000,
         img: 'assets/images/Excursiones/tourCiudad.jpg'
     }
     ,
     {
         name: 'Alquiler Velero',
         category: 'lunaDeMiel',
-        price: 12000,
+        price: 25000,
         img: 'assets/images/lunaDeMiel/alquilerVelero.jpg'
     }
     ,
     {
         name: 'Dia de SPA',
         category: 'lunaDeMiel',
-        price: 12000,
+        price: 30000,
         img: 'assets/images/lunaDeMiel/spa.jpg'
     }
-    // Agrega más productos...
 ];
 
 

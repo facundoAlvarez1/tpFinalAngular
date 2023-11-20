@@ -2,13 +2,13 @@
 ::ng-deep .finish-checkout-dialog {
   background-color: #fff;
   border: 1px solid #ddd;
-  padding: 30px; /* Aumenta el espacio interno */
+  padding: 30px; 
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  max-width: 500px; /* Ajusta el ancho según tus necesidades */
-  margin: 0 auto; /* Centra la ventana emergente horizontalmente */
-  overflow-y: auto; /* Esto habilita la barra de desplazamiento vertical si es necesario */
-  max-height: 80vh; /* Establece una altura máxima del 80% del viewport height */
+  max-width: 500px; 
+  margin: 0 auto; 
+  overflow-y: auto; 
+  max-height: 80vh; 
 }
 
   ::ng-deep .finish-checkout-dialog h2 {
@@ -33,8 +33,8 @@
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s;
-    margin: 10px 0; /* Añade espacio vertical entre los botones */
-    width: 100%; /* Ocupa el ancho completo del contenedor */
+    margin: 10px 0; 
+    width: 100%; 
   }
   
   ::ng-deep .finish-checkout-dialog button:hover {
@@ -46,7 +46,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 20px; /* Añade espacio entre los botones y el formulario */
+    margin-top: 20px;
   }
   
   ::ng-deep .finish-checkout-dialog form label {
@@ -61,26 +61,25 @@
   }
   
   ::ng-deep .finish-checkout-dialog form button {
-    width: 100%; /* Ocupa el ancho completo del formulario */
-    margin-top: 10px; /* Añade espacio entre los campos de entrada y el botón */
+    width: 100%; 
+    margin-top: 10px; 
   }
   
 
-  /* Agrega este estilo a tu archivo de estilos */
+ 
 .card-number-input.valid {
-  background-color: #ccffcc; /* Cambia el color de fondo según tus preferencias */
+  background-color: #ccffcc;
 }
 
 .card-logo img {
-  max-width: 100px; /* Ajusta el ancho máximo según tus necesidades */
-  max-height: 50px; /* Ajusta el alto máximo según tus necesidades */
+  max-width: 100px; 
+  max-height: 50px; 
 }
 
 
 .finish-checkout-dialog {
-  /* Otros estilos... */
-  overflow-y: auto; /* Esto habilita la barra de desplazamiento vertical si es necesario */
-  max-height: 500px; /* Establece una altura máxima para el resumen de compra para evitar que ocupe demasiado espacio */
+  overflow-y: auto; 
+  max-height: 500px; 
 }
 
 

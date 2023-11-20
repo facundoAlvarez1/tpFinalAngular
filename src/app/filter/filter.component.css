@@ -1,12 +1,12 @@
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(5, 1fr); /* 5 productos por fila */
-  gap: 20px; /* Espacio entre productos */
+  grid-template-columns: repeat(5, 1fr); 
+  gap: 20px; 
   text-align: center;
 }
 
 .grid-item {
-  font-size: 20px; /* Tamaño de letra para los productos */
+  font-size: 20px; 
   border: 1px solid #ddd;
   padding: 10px;
   background-color: #f9f9f9;
@@ -22,14 +22,14 @@
 .product-title {
   font-weight: bold;
   margin-top: 10px;
-  font-size: 18px; /* Tamaño de letra para el título del producto */
+  font-size: 18px; 
 }
 
 /* Estilos para el precio del producto */
 .product-price {
   color: #e44d26;
   font-weight: bold;
-  font-size: 20px; /* Tamaño de letra para el precio del producto */
+  font-size: 20px; 
 }
 
 
@@ -55,6 +55,6 @@
   padding: 10px;
   margin-top: 10px;
   border-radius: 5px;
-  font-size: 25px; /* Tamaño de letra para el precio del producto */
+  font-size: 25px; 
 
 }
