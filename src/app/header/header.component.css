@@ -30,12 +30,12 @@
     color: #0a014f;
     padding: 0.8rem 1.2rem;
     border-radius: 5rem;
-    background: linear-gradient(to right, #dfe0c4, #dac655); /* Gradiente de azul claro a azul más claro */
-    color: #ffffff; /* Color del texto (blanco) */
+    background: linear-gradient(to right, #dfe0c4, #dac655); 
+    color: #ffffff;
 }
 
 .nav-menu-link:hover {
-    background: linear-gradient(to right, #bea11d, #a39c87); /* Gradiente de colores al pasar el mouse */
+    background: linear-gradient(to right, #bea11d, #a39c87); 
     transition: .5s;
-    color: #111111; /* Color del texto al pasar el mouse (negro) */
+    color: #111111; 
 }

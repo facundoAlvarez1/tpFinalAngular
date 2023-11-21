@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ProductService, Product } from '../product.service'; // Asegúrate de importar el servicio y el tipo Producto
+import { ProductService, Product } from '../product.service';
 
 @Component({
   selector: 'app-products',

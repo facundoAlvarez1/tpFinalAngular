@@ -126,7 +126,7 @@ export class FinishCheckoutDialogComponent {
       this.bankTransferSelected = false;
       this.updateCheckoutSummary();
     } else {
-      // Error messages are handled inside isValidCreditCardInfo function
+      this.errorMessage = 'Tipo de tarjeta no admitido. Por favor, use una tarjeta válida.';
     }
   }
 

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ProductService } from '../product.service'; // Importa el servicio y el tipo Producto
+import { ProductService } from '../product.service';
 import { CarritoService } from '../cart/cart.service';
 
 interface Product {
@@ -27,21 +27,15 @@ export class FilterComponent {
 
 
   ngOnInit() {
-    //  Obtiene los productos del servicio
     this.products = this.productService.getProducts();
     this.applyFilter();
   }
 
   applyFilter() {
-   // console.log('Productos antes del filtro:', this.products);
     let productsFilteredTemp = [...this.products];
-
-    //console.log('Filtro Categoría:', this.filterCategory);
     if (this.filterCategory) {
       productsFilteredTemp = productsFilteredTemp.filter(producto => producto.category === this.filterCategory);
     }
-
-    //console.log('Productos filtrados:', this.productsFiltered);
     if (this.filterPrice) {
       const [minPrice, maxPrice] = this.filterPrice.split('-');
       const minPriceInt = parseInt(minPrice);
@@ -73,7 +67,7 @@ export class FilterComponent {
     this.filterCategory = '';
     this.filterPrice = '';
     this.filterSearch = '';
-    this.applyFilter(); // Vuelve a aplicar los filtros para mostrar todos los productos
+    this.applyFilter();
   }
 }
 
